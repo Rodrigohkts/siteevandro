@@ -12,30 +12,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mobile Menu Toggle
-    const menuToggle = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileBtn = document.getElementById('mobile-btn');
+    const navbarMobile = document.getElementById('navbar');
     
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    // Close mobile menu on clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+    if(mobileBtn && navbarMobile) {
+        mobileBtn.addEventListener('click', () => {
+            navbarMobile.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            if (navbarMobile.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
-    });
+    
+        // Close mobile menu on clicking a link
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMobile.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
 
     // Intersection Observer for Scroll Animations
     const observerOptions = {
