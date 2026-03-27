@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliveira e Castro Advogados | Soluções Jurídicas Sob Medida</title>
-    <meta name="description" content="Inovação e Soluções Jurídicas Sob Medida. Especialistas em Direito Societário, Empresarial, Recuperação Judicial, Agronegócio, Holdings e Governança Corporativa.">
+    <title>Oliveira Castro Advogados</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,290 +17,372 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                O<span class="logo-accent">&</span>C
-                <span class="logo-text">Oliveira Castro</span>
-            </a>
-            <nav class="nav-links">
-                <a href="#hero">Início</a>
-                <a href="#sobre">Quem Somos</a>
-                <a href="#servicos">Áreas de Atuação</a>
-                <a href="#socios">Sócios</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <a href="https://api.whatsapp.com/send/?phone=5565992344156&text=Olá,+gostaria+de+um+atendimento!" target="_blank" class="btn btn-outline nav-btn">Fale Conosco</a>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-container">
+            <div class="top-left">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
+            <div class="top-right">
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Av. Dr Hélio Ribeiro 525...</a>
+                <a href="#"><i class="fab fa-whatsapp"></i> (65) 99358-0611</a>
+                <a href="#"><i class="fas fa-phone"></i> (65) 3358-4126</a>
+                <a href="#"><i class="fas fa-envelope"></i> contato@oliveiracastro.adv.br</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <ul class="nav-left">
+                <li><a href="#">Societário</a></li>
+                <li><a href="#">Holdings</a></li>
+                <li><a href="#">Empresarial e Civil</a></li>
+                <li><a href="#">Recuperação Judicial</a></li>
+            </ul>
+            
+            <div class="logo-center">
+                <h1 class="logo-main">OC</h1>
+                <span class="logo-sub">OLIVEIRA CASTRO</span>
+                <span class="logo-desc">ADVOGADOS</span>
+            </div>
+            
+            <ul class="nav-right">
+                <li><a href="#">Agronegócio</a></li>
+                <li><a href="#">Governança Corporativa</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+            
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- Hero Slider -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" alt="Office Background">
+        </div>
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span class="hero-badge fade-up">Assessoria Jurídica de Excelência</span>
-            <h1 class="fade-up delay-1">Inovação e Soluções<br>Jurídicas Sob Medida</h1>
-            <p class="fade-up delay-2">Transformamos desafios jurídicos em oportunidades estratégicas para o sucesso do seu negócio. Governança, sustentabilidade e alta performance jurídica focado na longevidade das empresas e das famílias empresárias.</p>
-            <div class="hero-actions fade-up delay-3">
-                <a href="#servicos" class="btn btn-primary">Conheça nossas áreas</a>
-                <a href="https://api.whatsapp.com/send/?phone=5565992344156" target="_blank" class="btn btn-outline glass-btn"><i class="fab fa-whatsapp"></i> Fale com especialistas</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#sobre">
-                <i class="fas fa-chevron-down"></i>
-                <span>Rolar para baixo</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about section" id="sobre">
-        <div class="container about-grid">
-            <div class="about-image reveal-left">
-                <!-- Using unsplash as placeholder -->
-                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800" alt="Escritório de Advocacia Oliveira Castro">
-                <div class="experience-badge">
-                    <span class="years">20+</span>
-                    <span class="text">Anos de<br>Experiência</span>
-                </div>
-            </div>
-            <div class="about-content reveal-right">
-                <div class="section-title">
-                    <span class="subtitle">Quem Somos</span>
-                    <h2>Advocacia humanizada com foco em valor para clientes e sociedade</h2>
-                </div>
-                <p>O <strong>Oliveira Castro Advogados</strong> é um escritório especializado em soluções jurídicas estratégicas, inovadoras e sustentáveis, com foco em gerar valor para nossos clientes, negócios, sociedade e meio ambiente.</p>
-                <p>Com sede em Cuiabá-MT, somos referência no direito Societário, Empresarial, Recuperação Judicial, Cível, Holdings e Governança Corporativa, destacando-nos pela expertise em soluções jurídicas inovadoras e resultados duradouros.</p>
-                
-                <div class="features-list">
-                    <div class="feature-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <span>Ética e Integridade</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-handshake"></i>
-                        <span>Relações de Confiança</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Alta Performance</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-tree"></i>
-                        <span>Sustentabilidade</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services section bg-darker" id="servicos">
-        <div class="container">
-            <div class="section-title center reveal-up">
-                <span class="subtitle">Áreas de Atuação</span>
-                <h2>Especialistas focados na longevidade<br>das empresas e famílias</h2>
+        
+        <div class="hero-content">
+            <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
+            
+            <div class="slider-text">
+                <h2>Inovação e Soluções Jurídicas<br>Sob Medida</h2>
+                <p>Governança, sustentabilidade e alta performance jurídica<br>focados na longevidade das empresas e famílias</p>
+                <a href="#" class="btn btn-gold">FALE COM NOSSOS ESPECIALISTAS</a>
             </div>
             
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card reveal-up delay-1">
-                    <div class="card-icon"><i class="fas fa-building"></i></div>
-                    <h3>Direito Societário</h3>
-                    <p>Planejamento, estruturação e reorganização societária para empresas de todos os portes com segurança jurídica.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-card reveal-up delay-2">
-                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3>Estruturação de Holdings</h3>
-                    <p>Proteção patrimonial e planejamento sucessório por meio da criação e gestão eficiente de holdings familiares.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="service-card reveal-up delay-3">
-                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
-                    <h3>Recuperação Judicial</h3>
-                    <p>Assessoria completa na reestruturação de passivos e recuperação de empresas em crise financeira.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="service-card reveal-up delay-4">
-                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Direito Empresarial e Civil</h3>
-                    <p>Atuação estratégica em demandas complexas, prevenção de litígios e elaboração de contratos comerciais.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Service 5 -->
-                <div class="service-card reveal-up delay-5">
-                    <div class="card-icon"><i class="fas fa-tractor"></i></div>
-                    <h3>Setor do Agronegócio</h3>
-                    <p>Soluções jurídicas direcionadas ao agronegócio, incluindo contratos agrários e financiamento rural.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Service 6 -->
-                <div class="service-card reveal-up delay-6">
-                    <div class="card-icon"><i class="fas fa-users-cog"></i></div>
-                    <h3>Governança Corporativa</h3>
-                    <p>Implementação de boas práticas de gestão para transparência, equidade e responsabilidade corporativa.</p>
-                    <a href="#" class="card-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+            <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="partners section" id="socios">
+    <!-- Newsletter floating box -->
+    <div class="newsletter-wrapper">
         <div class="container">
-            <div class="section-title center reveal-up">
-                <span class="subtitle">Nossa História</span>
-                <h2>Conheça Nossos Sócios Fundadores</h2>
-                <p style="max-width: 700px; margin: 20px auto; color: var(--text-muted);">
-                    Além da sólida formação jurídica em renomadas instituições nacionais e internacionais, nossos sócios trazem uma visão de negócios focada na geração de valor.
-                </p>
+            <div class="newsletter-box">
+                <div class="news-text">
+                    <h3>Fique por dentro!</h3>
+                    <p>Receba novidades, dicas e conteúdos exclusivos<br>direto no seu e-mail!</p>
+                </div>
+                <div class="news-form">
+                    <p>Assine nossa newsletter agora!</p>
+                    <form>
+                        <input type="email" placeholder="E-mail" required>
+                        <button type="submit" class="btn btn-dark">Assinar</button>
+                    </form>
+                </div>
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&q=80&w=400" alt="Newspapers">
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Quem Somos -->
+    <section class="quem-somos">
+        <div class="container content-split">
+            <div class="text-side">
+                <h2 class="section-title">Quem somos</h2>
+                <p>O <strong>Oliveira Castro Advogados</strong> é um escritório especializado em soluções jurídicas corporativas, inovadoras e sustentáveis, com foco em gerar valor perene para nossos clientes, negócios, sociedade e meio ambiente. Atuamos com alta performance e humanização, num momento de mercado que exige resultados e integridade.</p>
+                <p>Com sede em Cuiabá-MT, somos referência no direito Societário, Empresarial, Recuperação Judicial, Cível, Holdings e Governança Corporativa. Destacamo-nos pela expertise na formulação de soluções jurídicas sob medida.</p>
+                <a href="#" class="btn btn-gold">Saiba Mais</a>
+            </div>
+            <div class="image-side">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" alt="Sócios Oliveira Castro" style="object-fit: cover; aspect-ratio: 16/9;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Atuação -->
+    <section class="areas-atuacao">
+        <div class="container">
+            <h2 class="section-title">Áreas de Atuação</h2>
             
-            <div class="partners-grid">
-                <!-- Partner 1 -->
-                <div class="partner-card reveal-up delay-1">
-                    <div class="partner-img">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600" alt="Bruno Oliveira Castro">
-                        <div class="partner-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="areas-grid">
+                <!-- Card 1 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400" alt="Societário">
+                        <div class="area-overlay">
+                            <h3>Direito Societário</h3>
                         </div>
                     </div>
-                    <div class="partner-info">
-                        <h3>Bruno Oliveira Castro</h3>
-                        <span class="role">Sócio Fundador</span>
-                    </div>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
                 </div>
                 
-                <!-- Partner 2 -->
-                <div class="partner-card reveal-up delay-2">
-                    <div class="partner-img">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Emília Vilela">
-                        <div class="partner-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Card 2 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400" alt="Holdings">
+                        <div class="area-overlay">
+                            <h3>Estruturação de Holdings</h3>
                         </div>
                     </div>
-                    <div class="partner-info">
-                        <h3>Emília Vilela</h3>
-                        <span class="role">Sócia Fundadora</span>
-                    </div>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
                 </div>
                 
-                <!-- Partner 3 -->
-                <div class="partner-card reveal-up delay-3">
-                    <div class="partner-img">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600" alt="Luize Menegassi">
-                        <div class="partner-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Card 3 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400" alt="Recuperação">
+                        <div class="area-overlay">
+                            <h3>Recuperação Judicial</h3>
                         </div>
                     </div>
-                    <div class="partner-info">
-                        <h3>Luize Menegassi</h3>
-                        <span class="role">Sócia Fundadora</span>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=400" alt="Governança">
+                        <div class="area-overlay">
+                            <h3>Governança Corporativa</h3>
+                        </div>
                     </div>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&q=80&w=400" alt="Empresarial">
+                        <div class="area-overlay">
+                            <h3>Direito Empresarial e Civil</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="area-item">
+                    <div class="area-card">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=400" alt="Agronegócio">
+                        <div class="area-overlay">
+                            <h3>Setor do Agronegócio</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold outline">Saiba Mais</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Banner -->
-    <section class="cta-banner section">
-        <div class="container reveal-up">
-            <div class="cta-content glass-panel">
-                <div class="cta-text">
-                    <h2>Diagnóstico de Viabilidade Preliminar</h2>
-                    <p>Entenda a viabilidade do seu projeto com um diagnóstico especializado e sob medida para sua empresa.</p>
-                </div>
-                <div class="cta-action">
-                    <a href="https://api.whatsapp.com/send/?phone=5565992344156" class="btn btn-primary">Comece agora mesmo</a>
+    <!-- Nosso Livro Banner -->
+    <section class="nosso-livro">
+        <div class="container livre-flex">
+            <div class="livro-text">
+                <h2 class="section-title-white">Nosso Livro</h2>
+                <p>No nosso livro, explicamos de forma simples e sem juridiquês a importância da governança corporativa e da holding na organização societária e patrimonial.</p>
+                <p>Uma leitura que traz reflexões sobre o legado que estamos construindo e como transmiti-lo.</p>
+            </div>
+            <div class="livro-img">
+                <!-- Placeholder for books -->
+                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=500" alt="Livro Herança e Legado" class="book-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa História -->
+    <section class="nossa-historia">
+        <div class="historia-watermark">
+            <span>Nossa História</span>
+        </div>
+        <div class="container historia-flex">
+            <div class="historia-text">
+                <h2 class="section-title">Nossa história (Sócios)</h2>
+                <p>O Escritório Oliveira Castro foi fundado há 20 anos pelos sócios Bruno Oliveira Castro, Luize Calvi Menegassi Castro e Emilia Vilela. Ao longo dessas duas décadas, o escritório se consolidou como uma referência na advocacia, oferecendo serviços de excelência aos seus clientes.</p>
+                <p>Além de suas atuações como docentes em universidades renomadas como UFMT, FADISP, PUC, Mackenzie, Unic e Univag, eles trazem uma sólida formação jurídica, com especializações em instituições de prestígio, como IBAJUD, LEX Magistratura e a Universidade Paris 1 Panthéon-Sorbonne.</p>
+                <p>O escritório é composto por uma equipe multidisciplinar, capaz de oferecer soluções jurídicas personalizadas a empresas de diferentes portes, nacionais e multinacionais. Nosso compromisso é com a excelência no atendimento e a satisfação de nossos clientes.</p>
+                <a href="#" class="btn btn-gold">Saiba Mais</a>
+            </div>
+            <div class="historia-image">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Sócios">
+                <div class="logo-overlay-socios">
+                    <span class="oc-big">OC</span><span class="oc-text">OLIVEIRA CASTRO</span>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Sócios Cards -->
+    <section class="socios-cards">
+        <div class="container">
+            <div class="socios-grid">
+                <!-- Sócio 1 -->
+                <div class="socio-item">
+                    <div class="socio-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" alt="Bruno">
+                        <div class="socio-name-box">
+                            <h4>Bruno Oliveira Castro</h4>
+                            <div class="socio-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold outline full-w">Ver Perfil Completo</a>
+                </div>
+                
+                <!-- Sócio 2 -->
+                <div class="socio-item">
+                    <div class="socio-photo">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" alt="Emília">
+                        <div class="socio-name-box">
+                            <h4>Emília Vilela</h4>
+                            <div class="socio-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold outline full-w">Ver Perfil Completo</a>
+                </div>
+                
+                <!-- Sócio 3 -->
+                <div class="socio-item">
+                    <div class="socio-photo">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" alt="Luize">
+                        <div class="socio-name-box">
+                            <h4>Luize Menegassi</h4>
+                            <div class="socio-social">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold outline full-w">Ver Perfil Completo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-grid">
+                <div class="blog-item">
+                    <h5>TRANSPARÊNCIA E ÉTICA EMPRESARIAL: COMO A GOVERNANÇA FORTALECE OS NEGÓCIOS</h5>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+                <div class="blog-item">
+                    <h5>FINANCIAMENTO RURAL: PRINCIPAIS LINHAS DE CRÉDITO E GARANTIAS JURÍDICAS...</h5>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+                <div class="blog-item">
+                    <h5>CASOS DE SUCESSO EM GOVERNANÇA CORPORATIVA: EMPRESAS QUE TRANSFORMARAM...</h5>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-gold outline">Ver todos os posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="image-gallery">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400" alt="Gallery">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=400" alt="Gallery">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=400" alt="Gallery">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=400" alt="Gallery">
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contato">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col brand-col">
-                    <a href="#" class="logo footer-logo">
-                        O<span class="logo-accent">&</span>C
-                        <span class="logo-text">Oliveira Castro</span>
-                    </a>
-                    <p class="footer-desc">
-                        Inovação e Soluções Jurídicas Sob Medida. Advocacia humanizada com foco em valor para clientes e sociedade.
-                    </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="site-footer">
+        <div class="footer-beige">
+            <div class="container">
+                <div class="footer-logo-box">
+                    <div class="logo-box">
+                        <h2>OC</h2>
+                        <span>OLIVEIRA CASTRO</span>
+                        <p>ADVOGADOS</p>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h4>Navegue</h4>
-                    <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#sobre">Nossa História</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#socios">Nossa Governança</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Societário</a></li>
-                        <li><a href="#">Holdings</a></li>
-                        <li><a href="#">Empresarial e Cível</a></li>
-                        <li><a href="#">Recuperação Judicial</a></li>
-                        <li><a href="#">Agronegócio</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col contact-col">
-                    <h4>Endereço & Contatos</h4>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Dr. Hélio Ribeiro 525<br>Ed. Helbor Dual Business / Salas 209-214<br>Alvorada | Cuiabá - MT | CEP 78048-250</span>
-                        </li>
-                        <li>
-                            <i class="fab fa-whatsapp"></i>
-                            <a href="https://wa.me/5565993580611">(65) 99358-0611</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:6533584126">(65) 3358-4126</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:contato@oliveiracastro.adv.br">contato@oliveiracastro.adv.br</a>
-                        </li>
-                    </ul>
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>Navegue</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Nossa Governança</a></li>
+                            <li><a href="#">Nossa História</a></li>
+                        </ul>
+                        <h4>Redes Sociais</h4>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li><a href="#">Societário</a></li>
+                            <li><a href="#">Holdings</a></li>
+                            <li><a href="#">Empresarial e Civil</a></li>
+                            <li><a href="#">Recuperação Judicial</a></li>
+                            <li><a href="#">Agronegócio</a></li>
+                            <li><a href="#">Governança Corporativa</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col address-col">
+                        <h4>Endereço & Contatos</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Av. Dr Hélio Ribeiro 525<br>Ed. Helbor Dual Business / Salas 209-214<br>Alvorada | Cuiabá - MT | CEP 78048-250</p>
+                        <p><i class="fab fa-whatsapp"></i> (65) 99358-0611</p>
+                        <p><i class="fas fa-phone"></i> (65) 3358-4126</p>
+                        <p><i class="fas fa-envelope"></i> contato@oliveiracastro.adv.br</p>
+                    </div>
+                    
+                    <div class="footer-col form-col">
+                        <h4>Fique por dentro!</h4>
+                        <p>Receba novidades, dicas e conteúdos exclusivos direto no seu e-mail!</p>
+                        <input type="email" placeholder="E-mail">
+                        <button class="btn btn-dark" style="margin-top: 10px; padding: 5px 15px;">Assinar</button>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Oliveira Castro Advogados. Todos os direitos reservados.</p>
-                <p>Desenvolvido por <a href="https://mestresdosite.com.br/">Mestres do Site</a> & Refeito com Design Premium</p>
+        </div>
+        <div class="footer-dark">
+            <div class="container foot-btm">
+                <span>© 2024 Oliveira Castro | Todos os direitos reservados.</span>
+                <span>Desenvolvido por Mestres do Site</span>
             </div>
         </div>
     </footer>
