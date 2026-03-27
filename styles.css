@@ -724,16 +724,16 @@ ul {
 @media(max-width: 768px) {
     /* Hide top bar for space */
     .top-bar { display: none; }
-    .navbar { top: 0; padding: 10px 0; background: transparent; transition: background 0.3s ease; }
-    .navbar.scrolled { background: rgba(56, 49, 44, 0.95); }
+    .navbar { position: relative; top: 0; padding: 10px 0; background: rgba(30, 26, 23, 1); }
+    .navbar.scrolled { background: rgba(30, 26, 23, 1); }
     
     /* Navigation */
-    .nav-container { flex-direction: row; justify-content: space-between; align-items: center; padding: 0 20px; width: 100%;}
-    .nav-left, .nav-right { display: none; width: 100%; flex-direction: column; gap: 15px; align-items: center; padding: 10px 0;}
-    .logo-main { font-size: 1.8rem; }
-    .logo-sub { font-size: 0.6rem; }
+    .nav-container { flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; width: 100%;}
+    .nav-left, .nav-right { display: none; width: 100%; flex-direction: column; gap: 10px; align-items: center; padding: 10px 0;}
+    .logo-main { font-size: 1.4rem; }
+    .logo-sub { font-size: 0.55rem; }
     
-    .mobile-menu-btn { display: block; font-size: 1.8rem; cursor: pointer; color: white;}
+    .mobile-menu-btn { display: block; font-size: 1.4rem; cursor: pointer; color: white;}
     
     /* When mobile menu is active */
     .navbar.active { background: rgba(30, 26, 23, 0.98); }
@@ -742,20 +742,27 @@ ul {
     .navbar.active .mobile-menu-btn { position: absolute; right: 20px; top: 5px; }
 
     /* Hero text fix */
-    .hero-content { padding-top: 80px; }
-    .slider-text h2 { font-size: 1.8rem; margin-bottom: 10px; margin-top: 0; }
-    .slider-text p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.4;}
+    .hero-content { padding-top: 0; }
+    .slider-text h2 { font-size: 1.4rem; margin-bottom: 5px; margin-top: 0; line-height: 1.2; }
+    .slider-text p { font-size: 0.75rem; margin-bottom: 10px; line-height: 1.3;}
     .slider-arrow { display: none; } /* Hide arrows on mobile, keep dots */
     
     /* Newsletter */
-    .newsletter-wrapper { margin-top: -30px; }
-    .news-text, .news-form { padding: 20px; text-align: center; }
-    .news-form form { flex-direction: column; }
+    .newsletter-wrapper { margin-top: -10px; }
+    .news-text, .news-form { padding: 15px; text-align: center; }
+    .news-text h3 { font-size: 1.2rem; }
+    .news-text p { font-size: 0.8rem; }
+    .news-form p { font-size: 0.75rem; }
+    .news-form form { flex-direction: column; gap: 5px; }
     .news-image { display: none; } /* Hide generic image to save space */
     
-    /* Sections spacing */
-    .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 50px 0; }
-    .nossa-historia { padding: 50px 0; }
+    /* Sections spacing & global scaling */
+    .section-title { font-size: 1.5rem; margin-bottom: 15px; }
+    .btn { font-size: 0.7rem; padding: 8px 15px; }
+    p { font-size: 0.85rem; }
+    
+    .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 40px 0; }
+    .nossa-historia { padding: 40px 0; }
     
     /* Grids stacking */
     .content-split { flex-direction: column; gap: 30px; text-align: center; }
