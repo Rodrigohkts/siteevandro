@@ -23,6 +23,11 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     font-family: var(--font-body);
     color: var(--clr-text);
@@ -376,6 +381,7 @@ ul {
 }
 
 .image-side img {
+    width: 100%;
     border-radius: 4px;
     box-shadow: 10px 10px 0 #EBE4DB;
 }
@@ -510,6 +516,11 @@ ul {
 .historia-image {
     flex: 1;
     position: relative;
+}
+
+.historia-image img {
+    width: 100%;
+    border-radius: 4px;
 }
 
 .logo-overlay-socios {
@@ -776,6 +787,7 @@ ul {
     .historia-watermark { display: none; }
     .book-mockup { max-width: 250px; }
     .logo-overlay-socios { padding: 15px 25px; bottom: -15px; right: 0; left: 0; text-align: center; }
+    .image-side img { box-shadow: 5px 5px 0 #EBE4DB; width: calc(100% - 5px); }
     
     /* Image Gallery */
     .image-gallery { flex-direction: column; height: auto; }
