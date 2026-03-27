@@ -722,12 +722,52 @@ ul {
     .footer-links-grid { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width: 768px) {
-    .content-split { flex-direction: column; }
-    .areas-grid { grid-template-columns: 1fr; }
-    .livre-flex { flex-direction: column; text-align: center;}
-    .socios-grid { grid-template-columns: 1fr; }
-    .blog-grid { grid-template-columns: 1fr; }
-    .image-gallery { flex-wrap: wrap; }
-    .image-gallery img { width: 50%; }
-    .footer-links-grid { grid-template-columns: 1fr; }
+    /* Hide top bar for space */
+    .top-bar { display: none; }
+    .navbar { top: 0; padding: 10px 0; }
+    
+    /* Navigation */
+    .nav-container { flex-direction: column; gap: 15px; }
+    .nav-left, .nav-right { flex-direction: column; gap: 10px; align-items: center; }
+    .logo-main { font-size: 2rem; }
+    .logo-sub { font-size: 0.65rem; }
+    
+    /* Hero */
+    .hero { aspect-ratio: auto; height: 75vh; min-height: 500px; }
+    .slider-text h2 { font-size: 2rem; }
+    .slider-text p { font-size: 0.9rem; margin-bottom: 20px; }
+    .slider-arrow { display: none; } /* Hide arrows on mobile, keep dots */
+    
+    /* Newsletter */
+    .newsletter-wrapper { margin-top: -30px; }
+    .news-text, .news-form { padding: 20px; text-align: center; }
+    .news-form form { flex-direction: column; }
+    .news-image { display: none; } /* Hide generic image to save space */
+    
+    /* Sections spacing */
+    .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 50px 0; }
+    .nossa-historia { padding: 50px 0; }
+    
+    /* Grids stacking */
+    .content-split { flex-direction: column; gap: 30px; text-align: center; }
+    .areas-grid { grid-template-columns: 1fr; gap: 20px; }
+    .livre-flex { flex-direction: column; text-align: center; gap: 30px; }
+    .socios-grid { grid-template-columns: 1fr; gap: 20px; }
+    .blog-grid { grid-template-columns: 1fr; gap: 30px; }
+    
+    /* Story watermark & books */
+    .historia-flex { padding-left: 0; flex-direction: column; text-align: center; }
+    .historia-watermark { display: none; }
+    .book-mockup { max-width: 250px; }
+    .logo-overlay-socios { padding: 15px 25px; bottom: -15px; right: 0; left: 0; text-align: center; }
+    
+    /* Image Gallery */
+    .image-gallery { flex-direction: column; height: auto; }
+    .image-gallery img { width: 100%; height: 200px; }
+    
+    /* Footer */
+    .footer-beige { padding: 40px 0; text-align: center; }
+    .footer-links-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-social { justify-content: center; display: flex; margin-bottom: 20px;}
+    .foot-btm { flex-direction: column; text-align: center; gap: 10px; }
 }
