@@ -28,6 +28,9 @@
         <button class="admin-btn admin-btn-save" onclick="cmsExportHTML()">
             ⬇️ Baixar site atualizado
         </button>
+        <button class="admin-btn" onclick="cmsOpenImagePicker()" style="background:#0078d4;color:white;">
+            🖼️ Upload de Imagem
+        </button>
         <button class="admin-btn admin-btn-exit" onclick="cmsExitEditMode()">
             &#x58; Sair do editor
         </button>
@@ -35,6 +38,39 @@
 
     <!-- TOAST NOTIFICATION -->
     <div id="cms-toast"></div>
+
+    <!-- IMAGE PICKER MODAL -->
+    <div id="img-picker-overlay">
+        <div id="img-picker-modal">
+            <div id="img-picker-header">
+                <h3>🖼️ Upload &amp; Escolha o Local</h3>
+                <button id="img-picker-close" onclick="cmsCloseImagePicker()">&times;</button>
+            </div>
+
+            <!-- STEP 1: Upload -->
+            <div id="picker-step-upload">
+                <div id="picker-dropzone" onclick="document.getElementById('picker-file-input').click()">
+                    <span class="dropzone-icon">📂</span>
+                    <strong>Clique aqui para escolher uma foto</strong><br>
+                    <span>ou arraste e solte a imagem aqui</span>
+                </div>
+                <input type="file" id="picker-file-input" accept="image/*" style="display:none">
+
+                <div id="picker-preview-wrap">
+                    <img id="picker-preview-img" src="" alt="Preview">
+                    <p id="picker-preview-name"></p>
+                    <button id="picker-next-btn" onclick="cmsPickerGoToChoose()">Próximo: Escolher Local →</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Choose slot -->
+            <div id="picker-step-choose">
+                <button id="picker-back-btn" onclick="cmsPickerGoBack()">← Voltar</button>
+                <p>Clique em qual imagem do site você quer substituir:</p>
+                <div id="picker-slots-grid"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Top Bar -->
     <div class="top-bar">

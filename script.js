@@ -297,11 +297,128 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('✅ index.html baixado! Suba no GitHub para publicar.');
     }
 
-    // Expose export function so the button in HTML can call it
+    // =============================================
+    //  GLOBAL CMS EXPORTS (called from HTML buttons)
+    // =============================================
+
     window.cmsExportHTML = exportHTML;
+
     window.cmsExitEditMode = function() {
-        editModeActive = true; // force it to flip
+        editModeActive = true;
         toggleEditMode();
+    };
+
+    // =============================================
+    //  IMAGE PICKER MODAL
+    // =============================================
+
+    let pickerCompressedDataUrl = null;
+
+    window.cmsOpenImagePicker = function() {
+        if (!editModeActive) {
+            showToast('Ative o Modo Editor primeiro (digite 41417).');
+            return;
+        }
+        // Reset state
+        pickerCompressedDataUrl = null;
+        document.getElementById('picker-file-input').value = '';
+        document.getElementById('picker-preview-img').src = '';
+        document.getElementById('picker-preview-name').textContent = '';
+        document.getElementById('picker-preview-wrap').classList.remove('visible');
+        document.getElementById('picker-step-upload').style.display = 'flex';
+        document.getElementById('picker-step-choose').classList.remove('visible');
+        document.getElementById('img-picker-overlay').classList.add('visible');
+    };
+
+    window.cmsCloseImagePicker = function() {
+        document.getElementById('img-picker-overlay').classList.remove('visible');
+    };
+
+    // Click outside modal to close
+    document.getElementById('img-picker-overlay').addEventListener('click', function(e) {
+        if (e.target === this) window.cmsCloseImagePicker();
+    });
+
+    // Drag & Drop support
+    const dropzone = document.getElementById('picker-dropzone');
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.style.background = 'rgba(48,209,88,0.1)'; });
+    dropzone.addEventListener('dragleave', () => { dropzone.style.background = ''; });
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.style.background = '';
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+            handlePickerFile(file);
+        }
+    });
+
+    document.getElementById('picker-file-input').addEventListener('change', function() {
+        if (this.files[0]) handlePickerFile(this.files[0]);
+    });
+
+    function handlePickerFile(file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            compressImage(ev.target.result, 1200, 0.85, function(compressed) {
+                pickerCompressedDataUrl = compressed;
+                document.getElementById('picker-preview-img').src = compressed;
+                document.getElementById('picker-preview-name').textContent = file.name;
+                document.getElementById('picker-preview-wrap').classList.add('visible');
+                showToast('✅ Imagem carregada! Clique em "Próximo" para escolher o local.');
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    window.cmsPickerGoToChoose = function() {
+        if (!pickerCompressedDataUrl) {
+            showToast('Selecione uma imagem primeiro.');
+            return;
+        }
+
+        // Gather all site images (excluding admin bar, picker, toast)
+        const allImgs = Array.from(document.querySelectorAll('img')).filter(img => {
+            return !img.closest('#admin-bar') &&
+                   !img.closest('#img-picker-overlay') &&
+                   !img.closest('#cms-toast') &&
+                   img.id !== 'picker-preview-img';
+        });
+
+        const grid = document.getElementById('picker-slots-grid');
+        grid.innerHTML = '';
+
+        allImgs.forEach((img, idx) => {
+            const slot = document.createElement('div');
+            slot.className = 'picker-slot';
+
+            const thumb = document.createElement('img');
+            thumb.src = img.src;
+            thumb.alt = img.alt || `Imagem ${idx + 1}`;
+
+            const label = document.createElement('div');
+            label.className = 'picker-slot-label';
+            label.textContent = img.alt || img.src.split('/').pop().substring(0, 30) || `Imagem ${idx + 1}`;
+
+            slot.appendChild(thumb);
+            slot.appendChild(label);
+
+            slot.addEventListener('click', () => {
+                img.src = pickerCompressedDataUrl;
+                img.removeAttribute('srcset');
+                window.cmsCloseImagePicker();
+                showToast('🖼️ Imagem substituída com sucesso!');
+            });
+
+            grid.appendChild(slot);
+        });
+
+        document.getElementById('picker-step-upload').style.display = 'none';
+        document.getElementById('picker-step-choose').classList.add('visible');
+    };
+
+    window.cmsPickerGoBack = function() {
+        document.getElementById('picker-step-choose').classList.remove('visible');
+        document.getElementById('picker-step-upload').style.display = 'flex';
     };
 
     // =============================================

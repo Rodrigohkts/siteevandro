@@ -1055,3 +1055,185 @@ body.edit-mode {
     from { transform: translateX(100px); opacity: 0; }
     to   { transform: translateX(0); opacity: 1; }
 }
+
+/* =============================================
+   IMAGE PICKER MODAL
+   ============================================= */
+
+#img-picker-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999998;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+}
+#img-picker-overlay.visible {
+    display: flex;
+}
+
+#img-picker-modal {
+    background: #0d1117;
+    border: 1px solid #30d158;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 780px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    font-family: 'Montserrat', sans-serif;
+}
+
+#img-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid #21262d;
+}
+
+#img-picker-header h3 {
+    color: #30d158;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#img-picker-close {
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+#img-picker-close:hover { color: white; }
+
+/* Step 1 — upload zone */
+#picker-step-upload {
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+#picker-dropzone {
+    width: 100%;
+    border: 2px dashed #30d158;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+#picker-dropzone:hover { background: rgba(48, 209, 88, 0.06); }
+#picker-dropzone .dropzone-icon { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+#picker-dropzone span { font-weight: 600; color: #30d158; }
+
+#picker-preview-wrap {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+#picker-preview-wrap.visible { display: flex; }
+#picker-preview-img {
+    max-height: 200px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #30d158;
+    object-fit: contain;
+}
+#picker-preview-name {
+    color: #8b949e;
+    font-size: 0.75rem;
+}
+#picker-next-btn {
+    padding: 10px 30px;
+    background: #30d158;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+#picker-next-btn:hover { background: #25a244; }
+
+/* Step 2 — choose slot */
+#picker-step-choose {
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+#picker-step-choose.visible { display: flex; }
+
+#picker-step-choose p {
+    padding: 14px 24px 10px;
+    color: #8b949e;
+    font-size: 0.8rem;
+}
+
+#picker-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+    padding: 10px 24px 24px;
+    overflow-y: auto;
+    max-height: 55vh;
+}
+
+.picker-slot {
+    cursor: pointer;
+    border: 2px solid #21262d;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.2s;
+    background: #161b22;
+    text-align: center;
+}
+.picker-slot:hover {
+    border-color: #30d158;
+    transform: scale(1.04);
+}
+.picker-slot img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+}
+.picker-slot-label {
+    padding: 6px 8px;
+    font-size: 0.65rem;
+    color: #8b949e;
+    word-break: break-all;
+    line-height: 1.3;
+}
+
+#picker-back-btn {
+    display: inline-block;
+    margin: 0 24px 16px;
+    background: none;
+    border: 1px solid #8b949e;
+    color: #8b949e;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+#picker-back-btn:hover { border-color: white; color: white; }
