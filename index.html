@@ -25,14 +25,20 @@
             NABI CMS
         </div>
         <span class="admin-status">— Modo Editor Ativo</span>
-        <button class="admin-btn admin-btn-save" onclick="cmsExportHTML()">
-            ⬇️ Baixar site atualizado
+        <button class="admin-btn admin-btn-save" onclick="cmsSaveToGitHub()">
+            🚀 Salvar no GitHub
+        </button>
+        <button class="admin-btn" onclick="cmsExportHTML()" style="background:#333;color:#ccc;">
+            ⬇️ Baixar HTML
         </button>
         <button class="admin-btn" onclick="cmsOpenImagePicker()" style="background:#0078d4;color:white;">
             🖼️ Upload de Imagem
         </button>
+        <button class="admin-btn" onclick="cmsOpenGHSettings()" title="Configurações GitHub" style="background:#21262d;color:#8b949e;padding:6px 12px;">
+            ⚙️
+        </button>
         <button class="admin-btn admin-btn-exit" onclick="cmsExitEditMode()">
-            &#x58; Sair do editor
+            &#x58; Sair
         </button>
     </div>
 
@@ -68,6 +74,34 @@
                 <button id="picker-back-btn" onclick="cmsPickerGoBack()">← Voltar</button>
                 <p>Clique em qual imagem do site você quer substituir:</p>
                 <div id="picker-slots-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GITHUB SETTINGS MODAL -->
+    <div id="gh-settings-overlay" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.8);backdrop-filter:blur(4px);align-items:center;justify-content:center;" onclick="if(event.target===this)cmsCloseGHSettings()">
+        <div style="background:#0d1117;border:1px solid #30d158;border-radius:14px;width:90%;max-width:480px;padding:30px;font-family:'Montserrat',sans-serif;">
+            <h3 style="color:#30d158;font-size:1rem;margin-bottom:20px;letter-spacing:1px;">⚙️ Configurações do GitHub</h3>
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Personal Access Token (PAT) *</label>
+            <input id="gh-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Usuário/Org do GitHub *</label>
+            <input id="gh-owner-input" type="text" placeholder="Rodrigohkts" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Nome do Repositório *</label>
+            <input id="gh-repo-input" type="text" placeholder="siteevandro" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+                <div>
+                    <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Branch</label>
+                    <input id="gh-branch-input" type="text" placeholder="main" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;">
+                </div>
+                <div>
+                    <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Caminho do arquivo</label>
+                    <input id="gh-path-input" type="text" placeholder="index.html" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;">
+                </div>
+            </div>
+            <p style="color:#58a6ff;font-size:0.7rem;margin-bottom:20px;">&#128274; As informações são salvas apenas no seu navegador (localStorage).</p>
+            <div style="display:flex;gap:10px;justify-content:flex-end;">
+                <button onclick="cmsCloseGHSettings()" style="padding:8px 20px;background:none;border:1px solid #8b949e;border-radius:6px;color:#8b949e;cursor:pointer;font-family:'Montserrat',sans-serif;">Cancelar</button>
+                <button onclick="cmsSaveGHSettings()" style="padding:8px 20px;background:#30d158;border:none;border-radius:6px;color:#000;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;">Salvar Configurações</button>
             </div>
         </div>
     </div>

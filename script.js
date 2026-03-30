@@ -246,30 +246,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
-    //  EXPORT / SAVE HTML
+    //  BUILD CLEAN HTML (shared by save & download)
     // =============================================
 
-    function exportHTML() {
-        showToast('⏳ Gerando arquivo...');
+    function buildCleanHTML() {
 
         // Clone the page
         const clone = document.documentElement.cloneNode(true);
 
-        // Remove admin bar from clone
-        const adminBar = clone.querySelector('#admin-bar');
-        if (adminBar) adminBar.remove();
-        const toast = clone.querySelector('#cms-toast');
-        if (toast) toast.remove();
-        const fileInput = clone.querySelector('input[type="file"]');
-        if (fileInput) fileInput.remove();
+        // Remove admin bar, picker, toast, file inputs from clone
+        ['#admin-bar', '#cms-toast', '#img-picker-overlay'].forEach(sel => {
+            const el = clone.querySelector(sel);
+            if (el) el.remove();
+        });
+        clone.querySelectorAll('input[type="file"]').forEach(el => el.remove());
 
         // Remove edit-mode from body in clone
         clone.querySelector('body').classList.remove('edit-mode');
 
         // Clean up data attributes and contenteditable
-        clone.querySelectorAll('[contenteditable]').forEach(el => {
-            el.removeAttribute('contenteditable');
-        });
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
         clone.querySelectorAll('[data-editable]').forEach(el => {
             el.removeAttribute('data-editable');
             el.removeAttribute('data-original');
@@ -284,28 +280,138 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
-        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
+        return '<!DOCTYPE html>\n' + clone.outerHTML;
+    }
 
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'index.html';
-        a.click();
-        URL.revokeObjectURL(url);
+    // =============================================
+    //  GITHUB SETTINGS
+    // =============================================
 
-        showToast('✅ index.html baixado! Suba no GitHub para publicar.');
+    const GH_STORAGE_KEY = 'nabi_cms_github';
+
+    function loadGHSettings() {
+        try { return JSON.parse(localStorage.getItem(GH_STORAGE_KEY)) || {}; }
+        catch(e) { return {}; }
+    }
+
+    function saveGHSettings(settings) {
+        localStorage.setItem(GH_STORAGE_KEY, JSON.stringify(settings));
+    }
+
+    window.cmsOpenGHSettings = function() {
+        const s = loadGHSettings();
+        document.getElementById('gh-token-input').value   = s.token  || '';
+        document.getElementById('gh-owner-input').value   = s.owner  || '';
+        document.getElementById('gh-repo-input').value    = s.repo   || '';
+        document.getElementById('gh-branch-input').value  = s.branch || 'main';
+        document.getElementById('gh-path-input').value    = s.path   || 'index.html';
+        const overlay = document.getElementById('gh-settings-overlay');
+        overlay.style.display = 'flex';
+    };
+
+    window.cmsCloseGHSettings = function() {
+        document.getElementById('gh-settings-overlay').style.display = 'none';
+    };
+
+    window.cmsSaveGHSettings = function() {
+        const settings = {
+            token:  document.getElementById('gh-token-input').value.trim(),
+            owner:  document.getElementById('gh-owner-input').value.trim(),
+            repo:   document.getElementById('gh-repo-input').value.trim(),
+            branch: document.getElementById('gh-branch-input').value.trim() || 'main',
+            path:   document.getElementById('gh-path-input').value.trim()   || 'index.html',
+        };
+        if (!settings.token || !settings.owner || !settings.repo) {
+            showToast('⚠️ Preencha todos os campos obrigatórios.');
+            return;
+        }
+        saveGHSettings(settings);
+        window.cmsCloseGHSettings();
+        showToast('✅ Configurações salvas!');
+    };
+
+    // =============================================
+    //  SAVE TO GITHUB
+    // =============================================
+
+    async function saveToGitHub() {
+        const s = loadGHSettings();
+        if (!s.token || !s.owner || !s.repo) {
+            showToast('⚙️ Configure o GitHub primeiro.');
+            window.cmsOpenGHSettings();
+            return;
+        }
+
+        showToast('⏳ Enviando para o GitHub...');
+
+        const htmlContent = buildCleanHTML();
+        const base64Content = btoa(unescape(encodeURIComponent(htmlContent)));
+
+        const apiBase = `https://api.github.com/repos/${s.owner}/${s.repo}/contents/${s.path}`;
+        const headers = {
+            'Authorization': `token ${s.token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        };
+
+        try {
+            // Step 1: Get current file SHA (required for updates)
+            let sha = '';
+            const getRes = await fetch(`${apiBase}?ref=${s.branch}`, { headers });
+            if (getRes.ok) {
+                const data = await getRes.json();
+                sha = data.sha;
+            } else if (getRes.status !== 404) {
+                throw new Error(`Erro ao buscar arquivo: ${getRes.status}`);
+            }
+
+            // Step 2: Commit the updated file
+            const body = {
+                message: `✨ Atualização via Nabi CMS — ${new Date().toLocaleString('pt-BR')}`,
+                content: base64Content,
+                branch: s.branch
+            };
+            if (sha) body.sha = sha;
+
+            const putRes = await fetch(apiBase, {
+                method: 'PUT',
+                headers,
+                body: JSON.stringify(body)
+            });
+
+            if (!putRes.ok) {
+                const errData = await putRes.json();
+                throw new Error(errData.message || `Erro ${putRes.status}`);
+            }
+
+            showToast('🚀 Site atualizado no GitHub! Vercel fará o deploy automaticamente.');
+
+        } catch(err) {
+            console.error(err);
+            showToast(`❌ Erro: ${err.message}`);
+        }
     }
 
     // =============================================
     //  GLOBAL CMS EXPORTS (called from HTML buttons)
     // =============================================
 
-    window.cmsExportHTML = exportHTML;
+    window.cmsSaveToGitHub = saveToGitHub;
 
     window.cmsExitEditMode = function() {
         editModeActive = true;
         toggleEditMode();
+    };
+
+    // Helper exposed for the old export button (kept as fallback)
+    window.cmsExportHTML = function() {
+        const htmlContent = buildCleanHTML();
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'index.html'; a.click();
+        URL.revokeObjectURL(url);
+        showToast('✅ index.html baixado!');
     };
 
     // =============================================
