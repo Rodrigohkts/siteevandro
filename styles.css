@@ -23,6 +23,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -90,12 +94,25 @@ ul {
     background: var(--gradient-gold);
     color: var(--clr-white);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+}
+
+.btn-gold:hover {
+    box-shadow: 0 8px 15px rgba(164, 145, 124, 0.4);
+    transform: translateY(-2px);
 }
 
 .btn-gold.outline {
     background: transparent;
     color: #9C8974;
     position: relative;
+    transition: all 0.4s ease;
+}
+
+.btn-gold.outline:hover {
+    color: var(--clr-dark);
+    box-shadow: 0 8px 15px rgba(164, 145, 124, 0.2);
+    transform: translateY(-2px);
 }
 
 .btn-gold.outline::before {
@@ -107,12 +124,19 @@ ul {
     background: var(--gradient-gold);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
 }
 
 .btn-dark {
     background: #6D6358;
     color: white;
+    transition: all 0.4s ease;
+}
+
+.btn-dark:hover {
+    background: #4B433A;
+    transform: translateY(-2px);
 }
 
 /* Top Bar */
@@ -146,6 +170,16 @@ ul {
     z-index: 99;
     background: var(--clr-brown-nav);
     padding: 15px 0;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    position: fixed;
+    top: 0;
+    background: rgba(56, 49, 44, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
 
 .nav-container {
@@ -412,12 +446,23 @@ ul {
     overflow: hidden;
     height: 250px;
     width: 100%;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .area-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.area-card:hover img {
+    transform: scale(1.1);
 }
 
 .area-overlay {
@@ -428,6 +473,11 @@ ul {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    transition: background 0.4s ease;
+}
+
+.area-card:hover .area-overlay {
+    background: rgba(20, 20, 20, 0.4);
 }
 
 .area-overlay h3 {
@@ -437,6 +487,13 @@ ul {
     border: 1px solid rgba(255,255,255,0.3);
     padding: 15px 20px;
     border-radius: 4px;
+    transition: all 0.4s ease;
+}
+
+.area-card:hover .area-overlay h3 {
+    background: var(--clr-white);
+    color: var(--clr-dark);
+    border-color: var(--clr-white);
 }
 
 /* Nosso Livro */
@@ -564,6 +621,11 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.socio-item:hover .socio-photo img {
+    transform: scale(1.05);
 }
 
 .socio-name-box {
@@ -574,6 +636,11 @@ ul {
     background: rgba(240, 237, 232, 0.95);
     padding: 15px;
     text-align: center;
+    transition: background 0.4s ease;
+}
+
+.socio-item:hover .socio-name-box {
+    background: rgba(255, 255, 255, 1);
 }
 
 .socio-name-box h4 {
@@ -586,6 +653,11 @@ ul {
 .socio-social a {
     color: #A4917C;
     margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.socio-social a:hover {
+    color: var(--clr-dark);
 }
 
 .full-w {
@@ -722,6 +794,45 @@ ul {
     display: flex;
     justify-content: space-between;
 }
+
+/* --- Scroll Animations --- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stagger delays for grid items */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
 
 /* Responsive */
 @media(max-width: 1024px) {
