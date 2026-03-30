@@ -910,3 +910,148 @@ ul {
     .footer-social { justify-content: center; display: flex; margin-bottom: 20px;}
     .foot-btm { flex-direction: column; text-align: center; gap: 10px; }
 }
+
+/* ================================================
+   SECRET CMS EDIT MODE STYLES (41417)
+   ================================================ */
+
+#admin-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    background: linear-gradient(90deg, #0d1117 0%, #161b22 100%);
+    border-bottom: 2px solid #30d158;
+    padding: 10px 20px;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    font-family: 'Montserrat', sans-serif;
+}
+
+#admin-bar.visible {
+    display: flex;
+}
+
+#admin-bar .admin-logo {
+    color: #30d158;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#admin-bar .admin-logo svg {
+    width: 18px;
+    height: 18px;
+    fill: #30d158;
+}
+
+.admin-btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-btn-save {
+    background: #30d158;
+    color: #000;
+}
+.admin-btn-save:hover { background: #25a244; }
+
+.admin-btn-exit {
+    background: transparent;
+    color: #ff453a;
+    border: 1px solid #ff453a;
+    margin-left: auto;
+}
+.admin-btn-exit:hover { background: #ff453a; color: white; }
+
+.admin-status {
+    font-size: 0.7rem;
+    color: #8b949e;
+    margin-left: 5px;
+}
+
+/* Editable text highlight */
+body.edit-mode [data-editable]:hover {
+    outline: 2px dashed #30d158 !important;
+    outline-offset: 3px;
+    cursor: text;
+    border-radius: 3px;
+}
+body.edit-mode [data-editable]:focus {
+    outline: 2px solid #30d158 !important;
+    outline-offset: 3px;
+    background: rgba(48, 209, 88, 0.05);
+    border-radius: 3px;
+}
+
+/* Editable image highlight */
+body.edit-mode [data-editable-img] {
+    position: relative;
+    cursor: pointer;
+}
+body.edit-mode [data-editable-img]::after {
+    content: '📷 Trocar Imagem';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+    pointer-events: none;
+}
+body.edit-mode [data-editable-img]:hover::after {
+    opacity: 1;
+}
+
+/* Push page content down when admin bar is visible */
+body.edit-mode {
+    padding-top: 52px;
+}
+
+/* Notification toast */
+#cms-toast {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #161b22;
+    color: #30d158;
+    border: 1px solid #30d158;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 999999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
