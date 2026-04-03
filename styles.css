@@ -600,10 +600,16 @@ ul {
 
 .socios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    max-width: 900px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .socios-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .socio-item {
@@ -711,7 +717,7 @@ ul {
 }
 
 .image-gallery img {
-    flex: 1 1 25%;
+    flex: 1;
     height: 300px;
     object-fit: cover;
     min-width: 250px;
