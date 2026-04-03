@@ -697,13 +697,15 @@ ul {
 /* Image Gallery */
 .image-gallery {
     display: flex;
-    height: 300px;
+    flex-wrap: wrap;
+    height: auto;
 }
 
 .image-gallery img {
-    width: 25%;
-    height: 100%;
+    flex: 1 1 25%;
+    height: 300px;
     object-fit: cover;
+    min-width: 250px;
 }
 
 /* Footer */
