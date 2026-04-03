@@ -540,4 +540,61 @@ document.addEventListener('DOMContentLoaded', () => {
         if (toastTimer) clearTimeout(toastTimer);
         toastTimer = setTimeout(() => { toast.style.display = 'none'; }, 3500);
     }
+
+    // =============================================
+    //  ANIMATED TESTIMONIALS (Google Reviews)
+    // =============================================
+    const testimonialsData = [
+        { name: "Missionária Nilma Dos anjos", role: "Cliente", text: "Atendimento excelente gostei muinto Ótimo profissional eu recomendo", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" },
+        { name: "Ismael Sojo", role: "Cliente", text: "Muito ágil e transparente, o pedido de urgência no processo foi muito rápido e o retorno positivo.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+        { name: "Wallasi Silva", role: "Cliente", text: "Atendimento de qualidade, sempre muito prestativo e atencioso, sempre acompanhando e informado com clareza cada passo do processo. Muito satisfeito com os serviços prestados.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" },
+        { name: "Marina Noschang", role: "Cliente", text: "Excelentes profissionais, comunicação acertiva e agilidade no processo.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" },
+        { name: "Allan Xeiner Reis", role: "Cliente", text: "Profissional de extrema qualidade, sempre muito claro em suas explicações e se mostrou sempre presente passando informações sobre o andamento do processo. Recomendo a todos!", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
+        { name: "karita silva", role: "Cliente", text: "Tive um excelente acompanhamento com o Dr. Evandro Alcântara, recebi orientações claras que me deixaram segura para entrar com a ação e graças a esse excelente profissional, nós obtivemos êxito na ação.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
+        { name: "Thiago Quevedo", role: "Cliente", text: "Excelente Profissional! Super Recomendo!", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
+        { name: "Cleverton Santos", role: "Cliente", text: "Super Recomendo... Doutor muito atencioso e dedicado.", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" },
+        { name: "Alisson Diego Prates Soares", role: "Cliente", text: "Excelente atendimento e um ótimo trabalho, muito obrigado!", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
+        { name: "Isac Fabricio Tapajos", role: "Cliente", text: "Profissional excelente!", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+        { name: "Marcos Felipe", role: "Cliente", text: "Bom atendimento e atenção. Excelente profissional.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" }
+    ];
+
+    const wrapper = document.getElementById('testimonials-dynamic-wrapper');
+    if (wrapper) {
+        // Divide into 3 columns
+        const cols = [[], [], []];
+        testimonialsData.forEach((item, index) => {
+            cols[index % 3].push(item);
+        });
+
+        const buildCard = (item) => `
+            <div class="testim-card">
+                <p class="testim-text">"${item.text}"</p>
+                <div class="testim-author">
+                    <img src="${item.img}" alt="${item.name}" class="testim-avatar">
+                    <div class="testim-info">
+                        <span class="testim-name">${item.name}</span>
+                        <div class="testim-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        cols.forEach((colData, colIndex) => {
+            const colDiv = document.createElement('div');
+            colDiv.className = `testim-col col-${colIndex + 1}`;
+            
+            // To create an infinite scroll without gaps, we duplicate the content
+            let columnHTML = '';
+            for(let i = 0; i < 2; i++) {
+                colData.forEach(item => {
+                    columnHTML += buildCard(item);
+                });
+            }
+            colDiv.innerHTML = columnHTML;
+            wrapper.appendChild(colDiv);
+        });
+    }
+
 });

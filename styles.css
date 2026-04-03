@@ -1237,3 +1237,121 @@ body.edit-mode {
     align-self: flex-start;
 }
 #picker-back-btn:hover { border-color: white; color: white; }
+
+/* --- Testimonials Animated Carousel --- */
+.animated-testimonials {
+    padding: 80px 0;
+    text-align: center;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+.testimonials-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.badge-tag {
+    border: 1px solid #e5e5e5;
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #666;
+    background: rgba(245,245,245,0.5);
+    margin-bottom: 20px;
+}
+.testimonials-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    max-height: 740px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+.testim-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 24px;
+    width: 320px;
+    max-width: 100%;
+    animation: scroll-vertical 15s linear infinite;
+}
+.testim-col.col-2 {
+    animation-duration: 19s;
+}
+.testim-col.col-3 {
+    animation-duration: 17s;
+}
+@media (max-width: 1024px) {
+    .testim-col.col-3 { display: none; }
+}
+@media (max-width: 768px) {
+    .testim-col.col-2 { display: none; }
+}
+
+@keyframes scroll-vertical {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.testim-card {
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #e5e5e5;
+    background: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+    user-select: none;
+}
+.testim-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+}
+.testim-text {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+.testim-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.testim-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+}
+.testim-card:hover .testim-avatar {
+    border-color: #d4c2af; /* gold matching */
+}
+.testim-info {
+    display: flex;
+    flex-direction: column;
+}
+.testim-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+.testim-role {
+    font-size: 0.8rem;
+    color: #999;
+}
+.testim-stars {
+    color: #FFD700;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
