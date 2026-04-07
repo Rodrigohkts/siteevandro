@@ -32,6 +32,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Impede scroll lateral em TODA a página */
+    max-width: 100%;
 }
 
 img {
@@ -46,6 +48,8 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* Ajuste geral de seções para fundo escuro */
@@ -963,18 +967,37 @@ ul {
     .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 35px 0; }
     .nossa-historia { padding: 35px 0; }
     
-    /* Quem Somos - centrado e compacto no mobile */
+    /* Quem Somos + Seções gerais - fix overflow mobile */
     .quem-somos { overflow: hidden; }
-    .quem-somos .container { padding: 0 18px; max-width: 100%; }
-    .content-split { flex-direction: column; gap: 20px; align-items: center; width: 100%; }
+    .quem-somos .container,
+    .areas-atuacao .container,
+    .nossa-historia .container,
+    .socios-cards .container,
+    .animated-testimonials .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    
+    /* Garante que nenhum elemento vaze */
+    section, .container, .content-split {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    
+    .content-split { flex-direction: column; gap: 20px; align-items: center; }
     .text-side { 
         text-align: center; 
         width: 100%; 
         max-width: 100%; 
         padding: 0;
+        box-sizing: border-box;
     }
     .text-side p { 
-        font-size: 0.75rem; 
+        font-size: 0.78rem; 
         line-height: 1.7; 
         color: var(--clr-text-light); 
         margin-bottom: 10px;
@@ -982,17 +1005,20 @@ ul {
         word-break: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
+        white-space: normal;
         max-width: 100%;
+        padding: 0 4px;
     }
     .text-side .section-title { 
         text-align: center; 
         font-size: 1.3rem; 
         margin-bottom: 12px;
         display: block;
+        max-width: 100%;
     }
     .text-side .btn { margin: 10px auto 0; display: inline-block; }
     .image-side { width: 100%; max-width: 100%; }
-    .image-side img { width: 100%; }
+    .image-side img { width: 100%; max-width: 100%; }
     .areas-grid { grid-template-columns: 1fr; gap: 20px; }
     .livre-flex { flex-direction: column; text-align: center; gap: 30px; }
     .socios-grid { grid-template-columns: 1fr; gap: 20px; }
