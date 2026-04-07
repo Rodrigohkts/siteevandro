@@ -278,8 +278,8 @@
 
         <!-- Content -->
         <div class="relative z-20 w-full max-w-6xl mx-auto px-6 py-12 flex flex-col items-center justify-center text-center">
-            <h1 class="font-heading text-[4.5vw] sm:text-[3.5vw] md:text-3xl lg:text-5xl text-white font-semibold leading-tight mb-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] whitespace-nowrap overflow-hidden text-ellipsis w-full">
-                <span class="text-gold-gradient">Soluções jurídicas</span> para você e sua Empresa
+            <h1 class="font-heading text-3xl sm:text-4xl md:text-3xl lg:text-5xl text-white font-semibold leading-tight mb-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] whitespace-normal md:whitespace-nowrap w-full">
+                <span class="text-gold-gradient">Soluções jurídicas</span><br class="md:hidden"> para você e sua Empresa
             </h1>
             <a href="https://wa.me/556692480611" target="_blank"
                class="inline-flex items-center gap-3 px-10 py-4 rounded-lg text-sm md:text-base font-bold tracking-widest uppercase text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-500/40"
@@ -641,34 +641,28 @@
                 id: "tsparticles",
                 options: {
                     fullScreen: { enable: true, zIndex: 0 },
-                    background: { color: { value: "#1a3848" } },
-                    fpsLimit: 40,
+                    background: { color: { value: "transparent" } },
+                    fpsLimit: 60,
                     particles: {
-                        number: { value: 55, density: { enable: true, area: 900 } },
-                        color: { value: ["#2a5a70", "#1e4a60", "#3a7a90", "#c8821a", "#e8a020"] },
+                        number: { value: 80, density: { enable: true, area: 900 } },
+                        color: { value: ["#c8821a", "#e8a020", "#f5cc60", "#ffffff"] },
                         opacity: {
-                            value: { min: 0.04, max: 0.18 },
+                            value: { min: 0.1, max: 0.6 },
                             animation: { enable: true, speed: 0.4, sync: false }
                         },
                         size: {
-                            value: { min: 1, max: 3.5 },
+                            value: { min: 1, max: 4 },
                             animation: { enable: true, speed: 1.5, sync: false }
                         },
                         move: {
                             enable: true,
-                            speed: { min: 0.2, max: 0.7 },
-                            direction: "none",
+                            speed: { min: 0.1, max: 0.4 },
+                            direction: "top",
                             random: true,
                             straight: false,
                             outModes: { default: "out" }
                         },
-                        links: {
-                            enable: true,
-                            distance: 130,
-                            color: "#2a6a80",
-                            opacity: 0.06,
-                            width: 1
-                        }
+                        links: { enable: false }
                     },
                     detectRetina: true,
                     interactivity: {
