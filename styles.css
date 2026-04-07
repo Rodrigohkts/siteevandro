@@ -1,17 +1,23 @@
 /* CSS Variables for Exact Graphical Clone */
 :root {
     --clr-bg: #1e3040;         /* Azul escuro da logo */
-    --clr-bg-card: #243848;    /* Azul ligeiramente mais claro para cards */
-    --clr-text: #d4c9bc;
-    --clr-text-light: #a09080;
-    --clr-dark: #f0ede8;
+    --clr-bg-card: #243848;
+    --clr-text: #e8dfd0;          /* Texto principal mais visível */
+    --clr-text-light: #c8b89a;   /* Texto secundário - dourado suave */
+    --clr-dark: #f5f0ea;
     --clr-brown: #c8b89a;
-    --clr-brown-nav: rgba(20, 35, 50, 0.92); /* Nav escuro */
+    --clr-brown-nav: rgba(14, 26, 38, 0.94); /* Azul escuro da logo, sem marrom */
     --clr-book-bg: #162838;
     --clr-white: #FFFFFF;
     
+    /* Gold da logo */
+    --gold-primary: #E8A020;
+    --gold-light: #F5CC60;
+    --gold-dark: #C07018;
+    
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, #A4917C 0%, #DCD1C3 40%, #A4917C 100%);
+    --gradient-gold: linear-gradient(135deg, #C07018 0%, #F5CC60 50%, #C07018 100%);
+    --gradient-gold-text: linear-gradient(135deg, #C8821A 0%, #F0D060 40%, #E8A020 70%, #C8821A 100%);
     
     /* Typography */
     --font-heading: 'Playfair Display', serif;
@@ -56,6 +62,14 @@ body {
     color: var(--clr-text-light);
 }
 
+/* Utilitário: texto com gradiente dourado */
+.gold-gradient-text {
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--clr-dark);
@@ -81,9 +95,13 @@ ul {
 /* Base Components */
 .section-title {
     font-size: 2.2rem;
-    color: #AE9B85; /* Gold text */
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 25px;
     font-weight: 400;
+    display: inline-block; /* necessário para o clip funcionar */
 }
 
 .section-title-white {
@@ -157,8 +175,8 @@ ul {
 
 /* Top Bar */
 .top-bar {
-    background: rgba(30, 26, 23, 0.95);
-    color: #A49B92;
+    background: rgba(10, 20, 30, 0.96); /* Azul escuro, sem marrom */
+    color: #c8b89a;
     font-size: 0.75rem;
     padding: 8px 0;
     position: absolute;
@@ -181,10 +199,10 @@ ul {
 /* Navbar */
 .navbar {
     position: absolute;
-    top: 35px; /* below top bar */
+    top: 35px;
     width: 100%;
     z-index: 99;
-    background: var(--clr-brown-nav);
+    background: rgba(10, 20, 30, 0.94); /* Azul escuro puro, sem marrom */
     padding: 15px 0;
     transition: all 0.4s ease;
 }
@@ -192,10 +210,10 @@ ul {
 .navbar.scrolled {
     position: fixed;
     top: 0;
-    background: rgba(56, 49, 44, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    background: rgba(10, 20, 32, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
 }
 
 .nav-container {
@@ -213,9 +231,17 @@ ul {
 }
 
 .nav-left li a, .nav-right li a {
-    color: var(--clr-white);
     font-size: 0.85rem;
     font-weight: 500;
+    background: var(--gradient-gold-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: opacity 0.3s ease;
+}
+
+.nav-left li a:hover, .nav-right li a:hover {
+    opacity: 0.75;
 }
 
 .logo-center {
