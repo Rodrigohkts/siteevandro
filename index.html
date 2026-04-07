@@ -24,18 +24,18 @@
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
             NABI CMS
         </div>
-        <span class="admin-status">— Modo Editor Ativo</span>
+        <span class="admin-status">â€” Modo Editor Ativo</span>
         <button class="admin-btn admin-btn-save" onclick="cmsSaveToGitHub()">
-            🚀 Salvar no GitHub
+            ðŸš€ Salvar no GitHub
         </button>
         <button class="admin-btn" onclick="cmsExportHTML()" style="background:#333;color:#ccc;">
-            ⬇️ Baixar HTML
+            â¬‡ï¸ Baixar HTML
         </button>
         <button class="admin-btn" onclick="cmsOpenImagePicker()" style="background:#0078d4;color:white;">
-            🖼️ Upload de Imagem
+            ðŸ–¼ï¸ Upload de Imagem
         </button>
-        <button class="admin-btn" onclick="cmsOpenGHSettings()" title="Configurações GitHub" style="background:#21262d;color:#8b949e;padding:6px 12px;">
-            ⚙️
+        <button class="admin-btn" onclick="cmsOpenGHSettings()" title="ConfiguraÃ§Ãµes GitHub" style="background:#21262d;color:#8b949e;padding:6px 12px;">
+            âš™ï¸
         </button>
         <button class="admin-btn admin-btn-exit" onclick="cmsExitEditMode()">
             &#x58; Sair
@@ -49,14 +49,14 @@
     <div id="img-picker-overlay">
         <div id="img-picker-modal">
             <div id="img-picker-header">
-                <h3>🖼️ Upload &amp; Escolha o Local</h3>
+                <h3>ðŸ–¼ï¸ Upload &amp; Escolha o Local</h3>
                 <button id="img-picker-close" onclick="cmsCloseImagePicker()">&times;</button>
             </div>
 
             <!-- STEP 1: Upload -->
             <div id="picker-step-upload">
                 <div id="picker-dropzone" onclick="document.getElementById('picker-file-input').click()">
-                    <span class="dropzone-icon">📂</span>
+                    <span class="dropzone-icon">ðŸ“‚</span>
                     <strong>Clique aqui para escolher uma foto</strong><br>
                     <span>ou arraste e solte a imagem aqui</span>
                 </div>
@@ -65,14 +65,14 @@
                 <div id="picker-preview-wrap">
                     <img id="picker-preview-img" src="" alt="Preview">
                     <p id="picker-preview-name"></p>
-                    <button id="picker-next-btn" onclick="cmsPickerGoToChoose()">Próximo: Escolher Local →</button>
+                    <button id="picker-next-btn" onclick="cmsPickerGoToChoose()">PrÃ³ximo: Escolher Local â†’</button>
                 </div>
             </div>
 
             <!-- STEP 2: Choose slot -->
             <div id="picker-step-choose">
-                <button id="picker-back-btn" onclick="cmsPickerGoBack()">← Voltar</button>
-                <p>Clique em qual imagem do site você quer substituir:</p>
+                <button id="picker-back-btn" onclick="cmsPickerGoBack()">â† Voltar</button>
+                <p>Clique em qual imagem do site vocÃª quer substituir:</p>
                 <div id="picker-slots-grid"></div>
             </div>
         </div>
@@ -81,12 +81,12 @@
     <!-- GITHUB SETTINGS MODAL -->
     <div id="gh-settings-overlay" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.8);backdrop-filter:blur(4px);align-items:center;justify-content:center;" onclick="if(event.target===this)cmsCloseGHSettings()">
         <div style="background:#0d1117;border:1px solid #30d158;border-radius:14px;width:90%;max-width:480px;padding:30px;font-family:'Montserrat',sans-serif;">
-            <h3 style="color:#30d158;font-size:1rem;margin-bottom:20px;letter-spacing:1px;">⚙️ Configurações do GitHub</h3>
+            <h3 style="color:#30d158;font-size:1rem;margin-bottom:20px;letter-spacing:1px;">âš™ï¸ ConfiguraÃ§Ãµes do GitHub</h3>
             <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Personal Access Token (PAT) *</label>
             <input id="gh-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
-            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Usuário/Org do GitHub *</label>
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">UsuÃ¡rio/Org do GitHub *</label>
             <input id="gh-owner-input" type="text" placeholder="Rodrigohkts" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
-            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Nome do Repositório *</label>
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Nome do RepositÃ³rio *</label>
             <input id="gh-repo-input" type="text" placeholder="siteevandro" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
                 <div>
@@ -98,10 +98,10 @@
                     <input id="gh-path-input" type="text" placeholder="index.html" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;">
                 </div>
             </div>
-            <p style="color:#58a6ff;font-size:0.7rem;margin-bottom:20px;">&#128274; As informações são salvas apenas no seu navegador (localStorage).</p>
+            <p style="color:#58a6ff;font-size:0.7rem;margin-bottom:20px;">&#128274; As informaÃ§Ãµes sÃ£o salvas apenas no seu navegador (localStorage).</p>
             <div style="display:flex;gap:10px;justify-content:flex-end;">
                 <button onclick="cmsCloseGHSettings()" style="padding:8px 20px;background:none;border:1px solid #8b949e;border-radius:6px;color:#8b949e;cursor:pointer;font-family:'Montserrat',sans-serif;">Cancelar</button>
-                <button onclick="cmsSaveGHSettings()" style="padding:8px 20px;background:#30d158;border:none;border-radius:6px;color:#000;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;">Salvar Configurações</button>
+                <button onclick="cmsSaveGHSettings()" style="padding:8px 20px;background:#30d158;border:none;border-radius:6px;color:#000;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;">Salvar ConfiguraÃ§Ãµes</button>
             </div>
         </div>
     </div>
@@ -116,9 +116,9 @@
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="top-right">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Av. Brasil, 577, 2º andar, sala 03...</a>
-                <a href="#"><i class="fab fa-whatsapp"></i> (65) 99353-1880</a>
-                <a href="#"><i class="fas fa-phone"></i> (65) 99353-1880</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Av. Brasil, 577, 2Âº andar, sala 03...</a>
+                <a href="https://wa.me/556692480611" target="_blank"><i class="fab fa-whatsapp"></i> (66) 9248-0611</a>
+                <a href="tel:+556692480611"><i class="fas fa-phone"></i> (66) 9248-0611</a>
                 <a href="#"><i class="fas fa-envelope"></i> advocaciagruponabi@gmail.com</a>
             </div>
         </div>
@@ -128,9 +128,9 @@
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <ul class="nav-left">
-                <li><a href="#">Direito Imobiliário</a></li>
-                <li><a href="#">Direito de Família</a></li>
-                <li><a href="#">Organização Patrimonial</a></li>
+                <li><a href="#">Direito ImobiliÃ¡rio</a></li>
+                <li><a href="#">Direito de FamÃ­lia</a></li>
+                <li><a href="#">OrganizaÃ§Ã£o Patrimonial</a></li>
                 <li><a href="#">Direito Administrativo</a></li>
             </ul>
             
@@ -140,8 +140,8 @@
             
             <ul class="nav-right">
                 <li><a href="#">Direito Trabalhista</a></li>
-                <li><a href="#">Auxílio-Doença INSS</a></li>
-                <li><a href="#">Assessoria Jurídica</a></li>
+                <li><a href="#">AuxÃ­lio-DoenÃ§a INSS</a></li>
+                <li><a href="#">Assessoria JurÃ­dica</a></li>
                 <li><a href="#">Direito Penal</a></li>
             </ul>
             
@@ -162,9 +162,9 @@
             <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
             
             <div class="slider-text fade-up delay-100">
-                <h2>Inovação e Soluções Jurídicas<br>Sob Medida</h2>
+                <h2>InovaÃ§Ã£o e SoluÃ§Ãµes JurÃ­dicas<br>Sob Medida</h2>
 
-                <a href="#" class="btn btn-gold">FALE COM NOSSOS ESPECIALISTAS</a>
+                <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold">FALE COM NOSSOS ESPECIALISTAS</a>
             </div>
             
             <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
@@ -183,29 +183,29 @@
         <div class="container content-split">
             <div class="text-side reveal-left">
                 <h2 class="section-title">Quem somos</h2>
-                <p>O <strong>Grupo Nabi</strong> é um escritório especializado em soluções jurídicas estratégicas, inovadoras e sustentáveis, com foco em gerar valor para nossos clientes, negócios e sociedade.</p>
-                <p>Atuamos com personalização, sempre comprometidos com a ética, integridade e relações de confiança.</p>
-                <p>Com sede em Campo Verde-MT, somos referência no Direito Civil, Empresarial, Recuperação Judicial, Estruturação Patrimonial e Sucessória Holdings, Imobiliário, Regularização de Imóveis, Inventário, Direito de Família (guarda, pensão, divórcio), Defesa PAD, Assessoria jurídica para Empresas, Acordos Comerciais e contratuais, destacando-nos pela expertise em soluções jurídicas inovadoras.</p>
+                <p>O <strong>Grupo Nabi</strong> Ã© um escritÃ³rio especializado em soluÃ§Ãµes jurÃ­dicas estratÃ©gicas, inovadoras e sustentÃ¡veis, com foco em gerar valor para nossos clientes, negÃ³cios e sociedade.</p>
+                <p>Atuamos com personalizaÃ§Ã£o, sempre comprometidos com a Ã©tica, integridade e relaÃ§Ãµes de confianÃ§a.</p>
+                <p>Com sede em Campo Verde-MT, somos referÃªncia no Direito Civil, Empresarial, RecuperaÃ§Ã£o Judicial, EstruturaÃ§Ã£o Patrimonial e SucessÃ³ria Holdings, ImobiliÃ¡rio, RegularizaÃ§Ã£o de ImÃ³veis, InventÃ¡rio, Direito de FamÃ­lia (guarda, pensÃ£o, divÃ³rcio), Defesa PAD, Assessoria jurÃ­dica para Empresas, Acordos Comerciais e contratuais, destacando-nos pela expertise em soluÃ§Ãµes jurÃ­dicas inovadoras.</p>
                 <a href="#" class="btn btn-gold">Saiba Mais</a>
             </div>
             <div class="image-side reveal-right">
-                <img src="img/DSC_9463 (1).jpg" alt="Sócios Grupo Nabi" style="object-fit: cover; aspect-ratio: 16/9;">
+                <img src="img/DSC_9463 (1).jpg" alt="SÃ³cios Grupo Nabi" style="object-fit: cover; aspect-ratio: 16/9;">
             </div>
         </div>
     </section>
 
-    <!-- Áreas de Atuação -->
+    <!-- Ãreas de AtuaÃ§Ã£o -->
     <section class="areas-atuacao">
         <div class="container">
-            <h2 class="section-title fade-up">Áreas de Atuação</h2>
+            <h2 class="section-title fade-up">Ãreas de AtuaÃ§Ã£o</h2>
             
             <div class="areas-grid">
                 <div class="area-item fade-up delay-100">
                     <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400" alt="Imobiliário">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400" alt="ImobiliÃ¡rio">
                         <div class="area-overlay">
-                            <h3>Direito Imobiliário</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Regularização de Imóveis urbano e rural</p>
+                            <h3>Direito ImobiliÃ¡rio</h3>
+                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">RegularizaÃ§Ã£o de ImÃ³veis urbano e rural</p>
                         </div>
                     </div>
                     <a href="direito-imobiliario.html" class="btn btn-gold outline">Saiba Mais</a>
@@ -213,10 +213,10 @@
                 
                 <div class="area-item fade-up delay-200">
                     <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=400" alt="Família">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=400" alt="FamÃ­lia">
                         <div class="area-overlay">
-                            <h3>Direito de Família</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Divórcio/guarda/pensão</p>
+                            <h3>Direito de FamÃ­lia</h3>
+                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">DivÃ³rcio/guarda/pensÃ£o</p>
                         </div>
                     </div>
                     <a href="direito-familia.html" class="btn btn-gold outline">Saiba Mais</a>
@@ -224,9 +224,9 @@
                 
                 <div class="area-item fade-up delay-300">
                     <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400" alt="Sucessória">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400" alt="SucessÃ³ria">
                         <div class="area-overlay">
-                            <h3>Organização Sucessória</h3>
+                            <h3>OrganizaÃ§Ã£o SucessÃ³ria</h3>
                             <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Holding</p>
                         </div>
                     </div>
@@ -258,7 +258,7 @@
                     <div class="area-card">
                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=400" alt="INSS">
                         <div class="area-overlay">
-                            <h3>Auxílio-Doença INSS</h3>
+                            <h3>AuxÃ­lio-DoenÃ§a INSS</h3>
                         </div>
                     </div>
                     <a href="auxilio-doenca-inss.html" class="btn btn-gold outline">Saiba Mais</a>
@@ -268,7 +268,7 @@
                     <div class="area-card">
                         <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400" alt="Assessoria">
                         <div class="area-overlay">
-                            <h3>Assessoria Jurídica</h3>
+                            <h3>Assessoria JurÃ­dica</h3>
                             <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Para Empresas</p>
                         </div>
                     </div>
@@ -289,8 +289,8 @@
         </div>
     </section>
 
-    <!-- Avaliações Google Banner -->
-    <!-- Avaliações Google Banner -->
+    <!-- AvaliaÃ§Ãµes Google Banner -->
+    <!-- AvaliaÃ§Ãµes Google Banner -->
     <section class="animated-testimonials">
         <div class="container">
             <div class="testimonials-header">
@@ -302,32 +302,32 @@
                         <div style="color: #FFD700; font-size: 1.2rem;">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div style="color: #c8b89a; font-size: 0.9rem;">Excelentes avaliações no Google</div>
+                        <div style="color: #c8b89a; font-size: 0.9rem;">Excelentes avaliaÃ§Ãµes no Google</div>
                     </div>
                 </div>
             </div>
 
             <div class="testimonials-wrapper" id="testimonials-dynamic-wrapper">
-                <!-- Avaliações renderizadas via script.js -->
+                <!-- AvaliaÃ§Ãµes renderizadas via script.js -->
             </div>
         </div>
     </section>
 
-    <!-- Nossa História -->
+    <!-- Nossa HistÃ³ria -->
     <section class="nossa-historia">
         <div class="historia-watermark">
-            <span>Nossa História</span>
+            <span>Nossa HistÃ³ria</span>
         </div>
         <div class="container historia-flex">
             <div class="historia-text reveal-left">
-                <h2 class="section-title">Nossa história (Sócios)</h2>
-                <p>O Grupo Nabi foi idealizado pelos sócios EVANDRO NABI BEZERRA DE ALCÂNTARA e ALINE FRANCIELE BELLO KIRCHESCH. Ao longo do tempo, o escritório se consolidou-se como uma referência na advocacia, oferecendo serviços de excelência aos seus clientes.</p>
-                <p>Além de suas atuações como docentes em universidades renomadas como UFMS, UNICENTRAL, eles trazem uma sólida formação jurídica, com especializações em instituições de prestígio. Esse conhecimento é aplicado com uma visão de negócios e foco na geração de valor para os clientes.</p>
-                <p>O escritório é composto por uma equipe multidisciplinar, capaz de oferecer soluções jurídicas personalizadas a empresas de diferentes portes, nacionais e multinacionais. Nosso compromisso é com a excelência no atendimento e a satisfação de nossos clientes, buscando sempre o melhor resultado.</p>
+                <h2 class="section-title">Nossa histÃ³ria (SÃ³cios)</h2>
+                <p>O Grupo Nabi foi idealizado pelos sÃ³cios EVANDRO NABI BEZERRA DE ALCÃ‚NTARA e ALINE FRANCIELE BELLO KIRCHESCH. Ao longo do tempo, o escritÃ³rio se consolidou-se como uma referÃªncia na advocacia, oferecendo serviÃ§os de excelÃªncia aos seus clientes.</p>
+                <p>AlÃ©m de suas atuaÃ§Ãµes como docentes em universidades renomadas como UFMS, UNICENTRAL, eles trazem uma sÃ³lida formaÃ§Ã£o jurÃ­dica, com especializaÃ§Ãµes em instituiÃ§Ãµes de prestÃ­gio. Esse conhecimento Ã© aplicado com uma visÃ£o de negÃ³cios e foco na geraÃ§Ã£o de valor para os clientes.</p>
+                <p>O escritÃ³rio Ã© composto por uma equipe multidisciplinar, capaz de oferecer soluÃ§Ãµes jurÃ­dicas personalizadas a empresas de diferentes portes, nacionais e multinacionais. Nosso compromisso Ã© com a excelÃªncia no atendimento e a satisfaÃ§Ã£o de nossos clientes, buscando sempre o melhor resultado.</p>
                 <a href="#" class="btn btn-gold">Saiba Mais</a>
             </div>
             <div class="historia-image reveal-right">
-                <img src="img/evandro-1.png" alt="Sócios">
+                <img src="img/evandro-1.png" alt="SÃ³cios">
                 <div class="logo-overlay-socios" style="text-align:center; padding: 20px;">
                     <img src="img/LOGO (2).png" alt="Grupo Nabi" style="height: 70px; object-fit: contain;">
                 </div>
@@ -335,11 +335,11 @@
         </div>
     </section>
 
-    <!-- Sócios Cards -->
+    <!-- SÃ³cios Cards -->
     <section class="socios-cards">
         <div class="container">
             <div class="socios-grid">
-                <!-- Sócio 1 -->
+                <!-- SÃ³cio 1 -->
                 <div class="socio-item fade-up delay-100">
                     <div class="socio-photo">
                         <img src="img/DSC_9561 (2).jpg" alt="Aline Franciele Bello Kirchesch" style="width: 100%; height: 480px; object-fit: cover; object-position: center center; border-radius: 16px;">
@@ -351,22 +351,22 @@
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/5565993531880" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogada</a>
+                    <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogada</a>
                 </div>
                 
-                <!-- Sócio 2 -->
+                <!-- SÃ³cio 2 -->
                 <div class="socio-item fade-up delay-300">
                     <div class="socio-photo">
-                        <img src="img/DSC_9591.jpg" alt="Evandro Nabi Bezerra de Alcântara" style="width: 100%; height: 480px; object-fit: cover; object-position: center center; border-radius: 16px;">
+                        <img src="img/DSC_9591.jpg" alt="Evandro Nabi Bezerra de AlcÃ¢ntara" style="width: 100%; height: 480px; object-fit: cover; object-position: center center; border-radius: 16px;">
                         <div class="socio-name-box">
-                            <h4 style="font-size: 1.1rem; text-align: center; margin-bottom: 5px;">Evandro Nabi Bezerra de Alcântara</h4>
+                            <h4 style="font-size: 1.1rem; text-align: center; margin-bottom: 5px;">Evandro Nabi Bezerra de AlcÃ¢ntara</h4>
                             <div class="socio-social" style="justify-content: center;">
                                 <a href="https://www.instagram.com/evandroalcantara.adv/" target="_blank"><i class="fab fa-instagram"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/5565993531880" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogado</a>
+                    <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogado</a>
                 </div>
             </div>
         </div>
@@ -376,9 +376,9 @@
 
     <!-- Image Gallery -->
     <section class="image-gallery">
-        <img src="img/fotos escritorio (1).jpeg" alt="Escritório 1">
-        <img src="img/fotos escritorio (2).jpeg" alt="Escritório 2">
-        <img src="img/fotos escritorio (3).jpeg" alt="Escritório 3">
+        <img src="img/fotos escritorio (1).jpeg" alt="EscritÃ³rio 1">
+        <img src="img/fotos escritorio (2).jpeg" alt="EscritÃ³rio 2">
+        <img src="img/fotos escritorio (3).jpeg" alt="EscritÃ³rio 3">
     </section>
 
     <!-- Footer -->
@@ -398,8 +398,8 @@
                         <h4>Navegue</h4>
                         <ul>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Nossa História</a></li>
-                            <li><a href="#">Áreas de Atuação</a></li>
+                            <li><a href="#">Nossa HistÃ³ria</a></li>
+                            <li><a href="#">Ãreas de AtuaÃ§Ã£o</a></li>
                         </ul>
                         <h4>Redes Sociais</h4>
                         <div class="footer-social">
@@ -410,30 +410,30 @@
                     </div>
                     
                     <div class="footer-col">
-                        <h4>Serviços</h4>
+                        <h4>ServiÃ§os</h4>
                         <ul>
-                            <li><a href="#">Direito Imobiliário</a></li>
-                            <li><a href="#">Direito de Família</a></li>
-                            <li><a href="#">Organização Patrimonial</a></li>
+                            <li><a href="#">Direito ImobiliÃ¡rio</a></li>
+                            <li><a href="#">Direito de FamÃ­lia</a></li>
+                            <li><a href="#">OrganizaÃ§Ã£o Patrimonial</a></li>
                             <li><a href="#">Direito Administrativo</a></li>
                             <li><a href="#">Direito Trabalhista</a></li>
-                            <li><a href="#">Auxílio-Doença INSS</a></li>
-                            <li><a href="#">Assessoria Jurídica</a></li>
+                            <li><a href="#">AuxÃ­lio-DoenÃ§a INSS</a></li>
+                            <li><a href="#">Assessoria JurÃ­dica</a></li>
                             <li><a href="#">Direito Penal</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-col address-col">
-                        <h4>Endereço & Contatos</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> Avenida Brasil, 577<br>2º andar, sala 03<br>Campo Verde – MT</p>
-                        <p><i class="fab fa-whatsapp"></i> (65) 99353-1880</p>
+                        <h4>EndereÃ§o & Contatos</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Avenida Brasil, 577<br>2Âº andar, sala 03<br>Campo Verde â€“ MT</p>
+                        <p><a href="https://wa.me/556692480611" target="_blank" style="color:inherit;"><i class="fab fa-whatsapp"></i> (66) 9248-0611</a></p>
                         <p><i class="fas fa-envelope"></i> advocaciagruponabi@gmail.com</p>
                         <p><i class="fas fa-globe"></i> www.gruponabiadv.com</p>
                     </div>
                     
                     <div class="footer-col form-col">
                         <h4>Fique por dentro!</h4>
-                        <p>Receba novidades, dicas e conteúdos exclusivos direto no seu e-mail!</p>
+                        <p>Receba novidades, dicas e conteÃºdos exclusivos direto no seu e-mail!</p>
                         <input type="email" placeholder="E-mail">
                         <button class="btn btn-dark" style="margin-top: 10px; padding: 5px 15px;">Assinar</button>
                     </div>
@@ -442,7 +442,7 @@
         </div>
         <div class="footer-dark">
             <div class="container foot-btm">
-                <span>© 2024 Grupo Nabi | Todos os direitos reservados.</span>
+                <span>Â© 2024 Grupo Nabi | Todos os direitos reservados.</span>
                 <span>Desenvolvido por Mestres do Site</span>
             </div>
         </div>
