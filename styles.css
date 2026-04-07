@@ -243,6 +243,7 @@ ul {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #1e3040; /* Cor de fundo da logo como fallback */
 }
 
 .hero-bg {
@@ -260,7 +261,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(80, 65, 50, 0.4);
+    background: rgba(20, 40, 58, 0.55); /* Tom azul-escuro da logo */
     z-index: -1;
 }
 
