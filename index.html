@@ -264,25 +264,28 @@
     </header>
 
     <!-- ===== HERO ===== -->
-    <section class="relative w-full overflow-hidden" style="min-height:56vw; max-height:90vh; min-height:300px;">
-        <div class="absolute inset-0 z-0">
-            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" class="hero-video"
+    <section class="relative w-full h-[65vh] md:h-[85vh] lg:h-[calc(100vh-100px)] min-h-[450px] overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0 w-full h-full overflow-hidden">
+            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" 
+                   class="w-full h-full object-cover" 
+                   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
                    x5-video-player-type="h5"
                    x5-video-player-fullscreen="true">
                 <source src="0327.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="absolute inset-0 z-10" style="background: linear-gradient(135deg, rgba(10,22,40,0.65) 0%, rgba(22,38,56,0.45) 100%);"></div>
+        <div class="absolute inset-0 z-10" style="background: linear-gradient(135deg, rgba(26,56,72,0.65) 0%, rgba(13,30,40,0.5) 100%);"></div>
 
         <!-- Content -->
-        <div class="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
-            <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl text-white font-semibold leading-tight mb-6 drop-shadow-2xl">
-                Inovação e Soluções Jurídicas<br><span class="text-gold-gradient">Sob Medida</span>
+        <div class="relative z-20 w-full max-w-6xl mx-auto px-6 py-12 flex flex-col items-center justify-center text-center">
+            <h1 class="font-heading text-4xl md:text-5xl lg:text-7xl text-white font-semibold leading-tight mb-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+                Inovação e Soluções Jurídicas<br>
+                <span class="text-gold-gradient inline-block mt-2">Sob Medida</span>
             </h1>
             <a href="https://wa.me/556692480611" target="_blank"
-               class="inline-flex items-center gap-2 px-8 py-3 rounded text-sm font-bold tracking-widest uppercase text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-500/30"
+               class="inline-flex items-center gap-3 px-10 py-4 rounded-lg text-sm md:text-base font-bold tracking-widest uppercase text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-500/40"
                style="background: linear-gradient(135deg, #c8821a, #f5cc60, #c8821a);">
-                <i class="fab fa-whatsapp text-base"></i>
+                <i class="fab fa-whatsapp text-xl"></i>
                 Fale com Nossos Especialistas
             </a>
         </div>
