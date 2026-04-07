@@ -1,12 +1,13 @@
 /* CSS Variables for Exact Graphical Clone */
 :root {
-    --clr-bg: #F9F7F5;
-    --clr-text: #413C33;
-    --clr-text-light: #70685B;
-    --clr-dark: #2F2A25;
-    --clr-brown: #5C5248;
-    --clr-brown-nav: rgba(56, 49, 44, 0.85); /* Slightly transparent brown for navbar */
-    --clr-book-bg: #63615F;
+    --clr-bg: #1e3040;         /* Azul escuro da logo */
+    --clr-bg-card: #243848;    /* Azul ligeiramente mais claro para cards */
+    --clr-text: #d4c9bc;
+    --clr-text-light: #a09080;
+    --clr-dark: #f0ede8;
+    --clr-brown: #c8b89a;
+    --clr-brown-nav: rgba(20, 35, 50, 0.92); /* Nav escuro */
+    --clr-book-bg: #162838;
     --clr-white: #FFFFFF;
     
     /* Gradients */
@@ -38,6 +39,21 @@ body {
     background-color: var(--clr-bg);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Ajuste geral de seções para fundo escuro */
+.quem-somos,
+.areas-atuacao,
+.nossa-historia,
+.socios-cards,
+.animated-testimonials {
+    background-color: var(--clr-bg);
+}
+
+.quem-somos p,
+.historia-text p,
+.text-side p {
+    color: var(--clr-text-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -237,13 +253,12 @@ ul {
 .hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9; /* Força a resolução 16:9 no banner */
-    max-height: 90vh; /* Limita a altura para não sumir da tela em monitores muito esticados */
+    aspect-ratio: 16 / 9;
+    max-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #1e3040; /* Cor de fundo da logo como fallback */
 }
 
 .hero-bg {
@@ -261,7 +276,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(20, 40, 58, 0.55); /* Tom azul-escuro da logo */
+    background: rgba(80, 65, 50, 0.4); /* Overlay original para o vídeo */
     z-index: -1;
 }
 
@@ -393,6 +408,7 @@ ul {
 /* Quem Somos */
 .quem-somos {
     padding: 100px 0;
+    background-color: var(--clr-bg);
 }
 
 .content-split {
@@ -731,7 +747,7 @@ ul {
 }
 
 .footer-beige {
-    background: #E5DBCD;
+    background: #162838;
     padding: 80px 0 60px;
 }
 
@@ -759,13 +775,13 @@ ul {
 .footer-col h4 {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: #5C5248;
+    color: #c8b89a;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
 .footer-col ul li { margin-bottom: 10px; }
-.footer-col ul li a { font-size: 0.85rem; color: #5C5248; }
+.footer-col ul li a { font-size: 0.85rem; color: #a09080; }
 
 .footer-social a {
     display: inline-flex;
@@ -780,18 +796,18 @@ ul {
 .address-col p {
     font-size: 0.85rem;
     margin-bottom: 15px;
-    color: #5C5248;
+    color: #a09080;
 }
 
 .address-col i {
     margin-right: 10px;
-    color: #5C5248;
+    color: #c8b89a;
 }
 
 .form-col p {
     font-size: 0.85rem;
     margin-bottom: 15px;
-    color: #5C5248;
+    color: #a09080;
 }
 
 .form-col input {
@@ -802,8 +818,8 @@ ul {
 }
 
 .footer-dark {
-    background: #5C5248;
-    color: white;
+    background: #0f1f2e;
+    color: #a09080;
     padding: 15px 0;
     font-size: 0.75rem;
 }
