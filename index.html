@@ -1,78 +1,147 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliveira Castro Advogados</title>
-    
+    <title>Grupo Nabi Advocacia | Soluções Jurídicas Estratégicas</title>
+    <meta name="description" content="Grupo Nabi Advocacia - Escritório especializado em soluções jurídicas estratégicas, inovadoras e sustentáveis em Campo Verde-MT.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#0a1628', 800: '#0f1e35', 700: '#162638', 600: '#1e3040', 500: '#243848' },
+                        gold: { 300: '#f5cc60', 400: '#e8a020', 500: '#c8821a', 600: '#a06010' }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #c8821a 0%, #f5cc60 50%, #e8a020 75%, #c8821a 100%)',
+                        'navy-gradient': 'linear-gradient(160deg, #0f1e35 0%, #162638 40%, #0a1628 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- SECRET CMS ADMIN BAR (trigger: type 41417 anywhere on the page) -->
-    <div id="admin-bar">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Keep custom CSS for CMS + animations -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
+
+        /* Gold gradient text utility */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #c8821a 0%, #f5cc60 45%, #e8a020 70%, #c8821a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(15, 30, 53, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 184, 154, 0.12);
+        }
+        .glass-light {
+            background: rgba(22, 38, 56, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 184, 154, 0.15);
+        }
+
+        /* Hero video fill */
+        .hero-video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Smooth reveal animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* Gold border bottom accent */
+        .gold-border-b { border-bottom: 2px solid transparent; border-image: linear-gradient(90deg, #c8821a, #f5cc60, #c8821a) 1; }
+
+        /* Area card overlay */
+        .area-img-overlay { transition: all 0.4s ease; }
+        .area-card:hover .area-img-overlay { background: rgba(10,20,30,0.4) !important; }
+        .area-card:hover img { transform: scale(1.08); }
+        .area-card img { transition: transform 0.6s ease; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a1628; }
+        ::-webkit-scrollbar-thumb { background: #c8821a; border-radius: 3px; }
+
+        /* Mobile menu transition */
+        #mobile-menu { transition: all 0.3s ease; }
+
+        /* Dots */
+        .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:background 0.3s; }
+        .dot.active { background: #e8a020; }
+
+        /* Socio card name gradient */
+        .socio-name { background: linear-gradient(135deg, #c8821a, #f5cc60, #e8a020); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
+</head>
+<body class="bg-navy-gradient min-h-screen text-gray-200 overflow-x-hidden">
+
+    <!-- ===== SECRET CMS ADMIN BAR ===== -->
+    <div id="admin-bar" class="admin-bar-hidden">
         <div class="admin-logo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
             NABI CMS
         </div>
-        <span class="admin-status">â€” Modo Editor Ativo</span>
-        <button class="admin-btn admin-btn-save" onclick="cmsSaveToGitHub()">
-            ðŸš€ Salvar no GitHub
-        </button>
-        <button class="admin-btn" onclick="cmsExportHTML()" style="background:#333;color:#ccc;">
-            â¬‡ï¸ Baixar HTML
-        </button>
-        <button class="admin-btn" onclick="cmsOpenImagePicker()" style="background:#0078d4;color:white;">
-            ðŸ–¼ï¸ Upload de Imagem
-        </button>
-        <button class="admin-btn" onclick="cmsOpenGHSettings()" title="ConfiguraÃ§Ãµes GitHub" style="background:#21262d;color:#8b949e;padding:6px 12px;">
-            âš™ï¸
-        </button>
-        <button class="admin-btn admin-btn-exit" onclick="cmsExitEditMode()">
-            &#x58; Sair
-        </button>
+        <span class="admin-status">&mdash; Modo Editor Ativo</span>
+        <button class="admin-btn admin-btn-save" onclick="cmsSaveToGitHub()">🚀 Salvar no GitHub</button>
+        <button class="admin-btn" onclick="cmsExportHTML()" style="background:#333;color:#ccc;">⬇️ Baixar HTML</button>
+        <button class="admin-btn" onclick="cmsOpenImagePicker()" style="background:#0078d4;color:white;">🖼️ Upload de Imagem</button>
+        <button class="admin-btn" onclick="cmsOpenGHSettings()" style="background:#21262d;color:#8b949e;padding:6px 12px;">⚙️</button>
+        <button class="admin-btn admin-btn-exit" onclick="cmsExitEditMode()">&#x58; Sair</button>
     </div>
-
-    <!-- TOAST NOTIFICATION -->
     <div id="cms-toast"></div>
 
     <!-- IMAGE PICKER MODAL -->
     <div id="img-picker-overlay">
         <div id="img-picker-modal">
             <div id="img-picker-header">
-                <h3>ðŸ–¼ï¸ Upload &amp; Escolha o Local</h3>
+                <h3>🖼️ Upload &amp; Escolha o Local</h3>
                 <button id="img-picker-close" onclick="cmsCloseImagePicker()">&times;</button>
             </div>
-
-            <!-- STEP 1: Upload -->
             <div id="picker-step-upload">
                 <div id="picker-dropzone" onclick="document.getElementById('picker-file-input').click()">
-                    <span class="dropzone-icon">ðŸ“‚</span>
+                    <span class="dropzone-icon">📂</span>
                     <strong>Clique aqui para escolher uma foto</strong><br>
                     <span>ou arraste e solte a imagem aqui</span>
                 </div>
                 <input type="file" id="picker-file-input" accept="image/*" style="display:none">
-
                 <div id="picker-preview-wrap">
                     <img id="picker-preview-img" src="" alt="Preview">
                     <p id="picker-preview-name"></p>
-                    <button id="picker-next-btn" onclick="cmsPickerGoToChoose()">PrÃ³ximo: Escolher Local â†’</button>
+                    <button id="picker-next-btn" onclick="cmsPickerGoToChoose()">Próximo: Escolher Local →</button>
                 </div>
             </div>
-
-            <!-- STEP 2: Choose slot -->
             <div id="picker-step-choose">
-                <button id="picker-back-btn" onclick="cmsPickerGoBack()">â† Voltar</button>
-                <p>Clique em qual imagem do site vocÃª quer substituir:</p>
+                <button id="picker-back-btn" onclick="cmsPickerGoBack()">← Voltar</button>
+                <p>Clique em qual imagem do site você quer substituir:</p>
                 <div id="picker-slots-grid"></div>
             </div>
         </div>
@@ -81,12 +150,12 @@
     <!-- GITHUB SETTINGS MODAL -->
     <div id="gh-settings-overlay" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.8);backdrop-filter:blur(4px);align-items:center;justify-content:center;" onclick="if(event.target===this)cmsCloseGHSettings()">
         <div style="background:#0d1117;border:1px solid #30d158;border-radius:14px;width:90%;max-width:480px;padding:30px;font-family:'Montserrat',sans-serif;">
-            <h3 style="color:#30d158;font-size:1rem;margin-bottom:20px;letter-spacing:1px;">âš™ï¸ ConfiguraÃ§Ãµes do GitHub</h3>
+            <h3 style="color:#30d158;font-size:1rem;margin-bottom:20px;letter-spacing:1px;">⚙️ Configurações do GitHub</h3>
             <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Personal Access Token (PAT) *</label>
             <input id="gh-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
-            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">UsuÃ¡rio/Org do GitHub *</label>
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Usuário/Org do GitHub *</label>
             <input id="gh-owner-input" type="text" placeholder="Rodrigohkts" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
-            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Nome do RepositÃ³rio *</label>
+            <label style="color:#8b949e;font-size:0.75rem;display:block;margin-bottom:4px;">Nome do Repositório *</label>
             <input id="gh-repo-input" type="text" placeholder="siteevandro" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;margin-bottom:14px;">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
                 <div>
@@ -98,356 +167,420 @@
                     <input id="gh-path-input" type="text" placeholder="index.html" style="width:100%;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:white;font-family:'Montserrat',sans-serif;font-size:0.8rem;">
                 </div>
             </div>
-            <p style="color:#58a6ff;font-size:0.7rem;margin-bottom:20px;">&#128274; As informaÃ§Ãµes sÃ£o salvas apenas no seu navegador (localStorage).</p>
+            <p style="color:#58a6ff;font-size:0.7rem;margin-bottom:20px;">&#128274; As informações são salvas apenas no seu navegador (localStorage).</p>
             <div style="display:flex;gap:10px;justify-content:flex-end;">
                 <button onclick="cmsCloseGHSettings()" style="padding:8px 20px;background:none;border:1px solid #8b949e;border-radius:6px;color:#8b949e;cursor:pointer;font-family:'Montserrat',sans-serif;">Cancelar</button>
-                <button onclick="cmsSaveGHSettings()" style="padding:8px 20px;background:#30d158;border:none;border-radius:6px;color:#000;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;">Salvar ConfiguraÃ§Ãµes</button>
+                <button onclick="cmsSaveGHSettings()" style="padding:8px 20px;background:#30d158;border:none;border-radius:6px;color:#000;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;">Salvar Configurações</button>
             </div>
         </div>
     </div>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-container">
-            <div class="top-left">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+    <!-- ===== TOP BAR ===== -->
+    <div class="hidden md:block w-full bg-navy-900/95 border-b border-gold-500/10 text-xs text-gray-400 py-2 relative z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank" class="hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="top-right">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Av. Brasil, 577, 2Âº andar, sala 03...</a>
-                <a href="https://wa.me/556692480611" target="_blank"><i class="fab fa-whatsapp"></i> (66) 9248-0611</a>
-                <a href="tel:+556692480611"><i class="fas fa-phone"></i> (66) 9248-0611</a>
-                <a href="#"><i class="fas fa-envelope"></i> advocaciagruponabi@gmail.com</a>
+            <div class="flex items-center gap-5">
+                <a href="#" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fas fa-map-marker-alt text-gold-500"></i> Av. Brasil, 577, 2º andar, sala 03</a>
+                <a href="https://wa.me/556692480611" target="_blank" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fab fa-whatsapp text-gold-500"></i> (66) 9248-0611</a>
+                <a href="mailto:advocaciagruponabi@gmail.com" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fas fa-envelope text-gold-500"></i> advocaciagruponabi@gmail.com</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <ul class="nav-left">
-                <li><a href="#">Direito ImobiliÃ¡rio</a></li>
-                <li><a href="#">Direito de FamÃ­lia</a></li>
-                <li><a href="#">OrganizaÃ§Ã£o Patrimonial</a></li>
-                <li><a href="#">Direito Administrativo</a></li>
-            </ul>
-            
-            <div class="logo-center">
-                <a href="#"><img src="img/LOGO (2).png" alt="Grupo Nabi Advocacia" style="height: 65px; object-fit: contain; margin-top: 5px;"></a>
-            </div>
-            
-            <ul class="nav-right">
-                <li><a href="#">Direito Trabalhista</a></li>
-                <li><a href="#">AuxÃ­lio-DoenÃ§a INSS</a></li>
-                <li><a href="#">Assessoria JurÃ­dica</a></li>
-                <li><a href="#">Direito Penal</a></li>
-            </ul>
-            
-            <div class="mobile-menu-btn" id="mobile-btn"><i class="fas fa-bars"></i></div>
+    <!-- ===== NAVBAR ===== -->
+    <header id="navbar" class="w-full z-40 bg-navy-900/95 backdrop-blur-md border-b border-gold-500/10 sticky top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between md:justify-center gap-4 md:gap-8 relative">
+
+            <!-- Left nav (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide">
+                <a href="direito-imobiliario.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Imobiliário</a>
+                <a href="direito-familia.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito de Família</a>
+                <a href="organizacao-sucessoria.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Organização Patrimonial</a>
+                <a href="direito-administrativo.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Administrativo</a>
+            </nav>
+
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0 mx-4">
+                <img src="img/LOGO (2).png" alt="Grupo Nabi Advocacia" class="h-14 md:h-16 object-contain">
+            </a>
+
+            <!-- Right nav (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide">
+                <a href="direito-trabalhista.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Trabalhista</a>
+                <a href="auxilio-doenca-inss.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Auxílio-Doença INSS</a>
+                <a href="assessoria-juridica.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Assessoria Jurídica</a>
+                <a href="direito-penal.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Penal</a>
+            </nav>
+
+            <!-- Mobile hamburger -->
+            <button id="mobile-btn" class="lg:hidden text-gold-400 text-2xl ml-auto" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass border-t border-gold-500/10">
+            <nav class="flex flex-col py-4 px-6 gap-4 text-sm font-semibold">
+                <a href="direito-imobiliario.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Imobiliário</a>
+                <a href="direito-familia.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito de Família</a>
+                <a href="organizacao-sucessoria.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Organização Patrimonial</a>
+                <a href="direito-administrativo.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Administrativo</a>
+                <a href="direito-trabalhista.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Trabalhista</a>
+                <a href="auxilio-doenca-inss.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Auxílio-Doença INSS</a>
+                <a href="assessoria-juridica.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Assessoria Jurídica</a>
+                <a href="direito-penal.html" class="text-gold-gradient py-2">Direito Penal</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Slider -->
-    <section class="hero">
-        <div class="hero-bg">
+    <!-- ===== HERO ===== -->
+    <section class="relative w-full overflow-hidden" style="aspect-ratio:16/9; max-height:90vh; min-height:300px;">
+        <div class="absolute inset-0 z-0">
             <video autoplay muted loop playsinline preload="auto" class="hero-video">
                 <source src="0327.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content">
-            <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
-            
-            <div class="slider-text fade-up delay-100">
-                <h2>InovaÃ§Ã£o e SoluÃ§Ãµes JurÃ­dicas<br>Sob Medida</h2>
+        <div class="absolute inset-0 z-10" style="background: linear-gradient(135deg, rgba(10,22,40,0.65) 0%, rgba(22,38,56,0.45) 100%);"></div>
 
-                <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold">FALE COM NOSSOS ESPECIALISTAS</a>
-            </div>
-            
-            <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+        <!-- Content -->
+        <div class="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
+            <h1 class="font-heading text-3xl md:text-5xl lg:text-6xl text-white font-semibold leading-tight mb-6 drop-shadow-2xl">
+                Inovação e Soluções Jurídicas<br><span class="text-gold-gradient">Sob Medida</span>
+            </h1>
+            <a href="https://wa.me/556692480611" target="_blank"
+               class="inline-flex items-center gap-2 px-8 py-3 rounded text-sm font-bold tracking-widest uppercase text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-500/30"
+               style="background: linear-gradient(135deg, #c8821a, #f5cc60, #c8821a);">
+                <i class="fab fa-whatsapp text-base"></i>
+                Fale com Nossos Especialistas
+            </a>
         </div>
-        
-        <div class="slider-dots">
+
+        <!-- Dots -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             <span class="dot active"></span>
             <span class="dot"></span>
         </div>
     </section>
 
-
-
-    <!-- Quem Somos -->
-    <section class="quem-somos">
-        <div class="container content-split">
-            <div class="text-side reveal-left">
-                <h2 class="section-title">Quem somos</h2>
-                <p>O <strong>Grupo Nabi</strong> Ã© um escritÃ³rio especializado em soluÃ§Ãµes jurÃ­dicas estratÃ©gicas, inovadoras e sustentÃ¡veis, com foco em gerar valor para nossos clientes, negÃ³cios e sociedade.</p>
-                <p>Atuamos com personalizaÃ§Ã£o, sempre comprometidos com a Ã©tica, integridade e relaÃ§Ãµes de confianÃ§a.</p>
-                <p>Com sede em Campo Verde-MT, somos referÃªncia no Direito Civil, Empresarial, RecuperaÃ§Ã£o Judicial, EstruturaÃ§Ã£o Patrimonial e SucessÃ³ria Holdings, ImobiliÃ¡rio, RegularizaÃ§Ã£o de ImÃ³veis, InventÃ¡rio, Direito de FamÃ­lia (guarda, pensÃ£o, divÃ³rcio), Defesa PAD, Assessoria jurÃ­dica para Empresas, Acordos Comerciais e contratuais, destacando-nos pela expertise em soluÃ§Ãµes jurÃ­dicas inovadoras.</p>
-                <a href="#" class="btn btn-gold">Saiba Mais</a>
-            </div>
-            <div class="image-side reveal-right">
-                <img src="img/DSC_9463 (1).jpg" alt="SÃ³cios Grupo Nabi" style="object-fit: cover; aspect-ratio: 16/9;">
-            </div>
-        </div>
-    </section>
-
-    <!-- Ãreas de AtuaÃ§Ã£o -->
-    <section class="areas-atuacao">
-        <div class="container">
-            <h2 class="section-title fade-up">Ãreas de AtuaÃ§Ã£o</h2>
-            
-            <div class="areas-grid">
-                <div class="area-item fade-up delay-100">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400" alt="ImobiliÃ¡rio">
-                        <div class="area-overlay">
-                            <h3>Direito ImobiliÃ¡rio</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">RegularizaÃ§Ã£o de ImÃ³veis urbano e rural</p>
-                        </div>
-                    </div>
-                    <a href="direito-imobiliario.html" class="btn btn-gold outline">Saiba Mais</a>
+    <!-- ===== QUEM SOMOS ===== -->
+    <section class="py-16 md:py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <!-- Text -->
+                <div class="flex-1 text-center lg:text-left reveal-left">
+                    <h2 class="font-heading text-3xl md:text-4xl text-gold-gradient mb-6">Quem somos</h2>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+                        O <strong class="text-gold-400">Grupo Nabi</strong> é um escritório especializado em soluções jurídicas estratégicas, inovadoras e sustentáveis, com foco em gerar valor para nossos clientes, negócios e sociedade.
+                    </p>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                        Atuamos com personalização, sempre comprometidos com a ética, integridade e relações de confiança.
+                    </p>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                        Com sede em Campo Verde-MT, somos referência no Direito Civil, Empresarial, Recuperação Judicial, Estruturação Patrimonial e Sucessória Holdings, Imobiliário, Regularização de Imóveis, Inventário, Direito de Família (guarda, pensão, divórcio), Defesa PAD, Assessoria jurídica para Empresas, Acordos Comerciais e contratuais.
+                    </p>
+                    <a href="https://wa.me/556692480611" target="_blank"
+                       class="inline-block px-8 py-3 rounded text-sm font-bold tracking-widest uppercase text-white transition-all duration-300 hover:-translate-y-1"
+                       style="background: linear-gradient(135deg, #c8821a, #f5cc60, #c8821a);">
+                        Saiba Mais
+                    </a>
                 </div>
-                
-                <div class="area-item fade-up delay-200">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=400" alt="FamÃ­lia">
-                        <div class="area-overlay">
-                            <h3>Direito de FamÃ­lia</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">DivÃ³rcio/guarda/pensÃ£o</p>
-                        </div>
-                    </div>
-                    <a href="direito-familia.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-                
-                <div class="area-item fade-up delay-300">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400" alt="SucessÃ³ria">
-                        <div class="area-overlay">
-                            <h3>OrganizaÃ§Ã£o SucessÃ³ria</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Holding</p>
-                        </div>
-                    </div>
-                    <a href="organizacao-sucessoria.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-                
-                <div class="area-item fade-up delay-100">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400" alt="Administrativo">
-                        <div class="area-overlay">
-                            <h3>Direito Administrativo</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Defesa PAD</p>
-                        </div>
-                    </div>
-                    <a href="direito-administrativo.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-                
-                <div class="area-item fade-up delay-200">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400" alt="Trabalhista">
-                        <div class="area-overlay">
-                            <h3>Direito Trabalhista</h3>
-                        </div>
-                    </div>
-                    <a href="direito-trabalhista.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-                
-                <div class="area-item fade-up delay-300">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=400" alt="INSS">
-                        <div class="area-overlay">
-                            <h3>AuxÃ­lio-DoenÃ§a INSS</h3>
-                        </div>
-                    </div>
-                    <a href="auxilio-doenca-inss.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-
-                <div class="area-item fade-up delay-100">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400" alt="Assessoria">
-                        <div class="area-overlay">
-                            <h3>Assessoria JurÃ­dica</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Para Empresas</p>
-                        </div>
-                    </div>
-                    <a href="assessoria-juridica.html" class="btn btn-gold outline">Saiba Mais</a>
-                </div>
-                
-                <div class="area-item fade-up delay-200">
-                    <div class="area-card">
-                        <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80&w=400" alt="Penal">
-                        <div class="area-overlay">
-                            <h3>Direito Penal</h3>
-                            <p style="color:white; font-size:0.8rem; margin-top:5px; text-align:center;">Defesa Crimes</p>
-                        </div>
-                    </div>
-                    <a href="direito-penal.html" class="btn btn-gold outline">Saiba Mais</a>
+                <!-- Image -->
+                <div class="flex-1 w-full reveal-right">
+                    <img src="img/DSC_9463 (1).jpg" alt="Sócios Grupo Nabi"
+                         class="w-full rounded-xl object-cover shadow-2xl border border-gold-500/20"
+                         style="aspect-ratio:16/9;">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AvaliaÃ§Ãµes Google Banner -->
-    <!-- AvaliaÃ§Ãµes Google Banner -->
-    <section class="animated-testimonials">
-        <div class="container">
-            <div class="testimonials-header">
-                <div class="badge-tag">Testimonials</div>
-                <h2 class="section-title" style="font-weight: 800; font-family: var(--font-body); font-size: 2.5rem; margin-top: 10px; display:block;">O que nossos clientes dizem</h2>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px;">
-                    <div style="font-size: 2.5rem; font-weight: bold; color: #F0D060;">5.0</div>
-                    <div style="text-align: left;">
-                        <div style="color: #FFD700; font-size: 1.2rem;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div style="color: #c8b89a; font-size: 0.9rem;">Excelentes avaliaÃ§Ãµes no Google</div>
+    <!-- ===== ÁREAS DE ATUAÇÃO ===== -->
+    <section class="py-16 md:py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-heading text-3xl md:text-4xl text-gold-gradient text-center mb-12 reveal">Áreas de Atuação</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card template -->
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400" alt="Imobiliário" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Direito Imobiliário</h3>
+                        <p class="text-white/80 text-xs mt-2">Regularização de Imóveis urbano e rural</p>
+                    </div>
+                    <a href="direito-imobiliario.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=400" alt="Família" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Direito de Família</h3>
+                        <p class="text-white/80 text-xs mt-2">Divórcio / Guarda / Pensão</p>
+                    </div>
+                    <a href="direito-familia.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400" alt="Sucessória" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Organização Sucessória</h3>
+                        <p class="text-white/80 text-xs mt-2">Holdings</p>
+                    </div>
+                    <a href="organizacao-sucessoria.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400" alt="Administrativo" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Direito Administrativo</h3>
+                        <p class="text-white/80 text-xs mt-2">Defesa PAD</p>
+                    </div>
+                    <a href="direito-administrativo.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400" alt="Trabalhista" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Direito Trabalhista</h3>
+                    </div>
+                    <a href="direito-trabalhista.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=400" alt="INSS" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Auxílio-Doença INSS</h3>
+                    </div>
+                    <a href="auxilio-doenca-inss.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400" alt="Assessoria" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Assessoria Jurídica</h3>
+                        <p class="text-white/80 text-xs mt-2">Para Empresas</p>
+                    </div>
+                    <a href="assessoria-juridica.html" class="absolute inset-0"></a>
+                </div>
+
+                <div class="area-card group relative rounded-xl overflow-hidden shadow-xl reveal cursor-pointer" style="height:240px;">
+                    <img src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80&w=400" alt="Penal" class="w-full h-full object-cover">
+                    <div class="area-img-overlay absolute inset-0 flex flex-col items-center justify-center" style="background:rgba(10,20,30,0.62);">
+                        <h3 class="font-heading text-white text-lg border border-white/30 px-5 py-3 rounded group-hover:bg-white group-hover:text-navy-800 transition-all duration-300">Direito Penal</h3>
+                        <p class="text-white/80 text-xs mt-2">Defesa Crimes</p>
+                    </div>
+                    <a href="direito-penal.html" class="absolute inset-0"></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AVALIAÇÕES ===== -->
+    <section class="animated-testimonials py-16 md:py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 reveal">
+                <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase border border-gold-500/40 text-gold-400 mb-4">Testimonials</span>
+                <h2 class="font-body font-extrabold text-3xl md:text-4xl text-gold-gradient mb-4">O que nossos clientes dizem</h2>
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-4xl font-bold text-gold-300">5.0</span>
+                    <div>
+                        <div class="text-yellow-400 text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="text-gray-400 text-sm">Excelentes avaliações no Google</div>
                     </div>
                 </div>
             </div>
-
-            <div class="testimonials-wrapper" id="testimonials-dynamic-wrapper">
-                <!-- AvaliaÃ§Ãµes renderizadas via script.js -->
-            </div>
+            <div class="testimonials-wrapper" id="testimonials-dynamic-wrapper"></div>
         </div>
     </section>
 
-    <!-- Nossa HistÃ³ria -->
-    <section class="nossa-historia">
-        <div class="historia-watermark">
-            <span>Nossa HistÃ³ria</span>
-        </div>
-        <div class="container historia-flex">
-            <div class="historia-text reveal-left">
-                <h2 class="section-title">Nossa histÃ³ria (SÃ³cios)</h2>
-                <p>O Grupo Nabi foi idealizado pelos sÃ³cios EVANDRO NABI BEZERRA DE ALCÃ‚NTARA e ALINE FRANCIELE BELLO KIRCHESCH. Ao longo do tempo, o escritÃ³rio se consolidou-se como uma referÃªncia na advocacia, oferecendo serviÃ§os de excelÃªncia aos seus clientes.</p>
-                <p>AlÃ©m de suas atuaÃ§Ãµes como docentes em universidades renomadas como UFMS, UNICENTRAL, eles trazem uma sÃ³lida formaÃ§Ã£o jurÃ­dica, com especializaÃ§Ãµes em instituiÃ§Ãµes de prestÃ­gio. Esse conhecimento Ã© aplicado com uma visÃ£o de negÃ³cios e foco na geraÃ§Ã£o de valor para os clientes.</p>
-                <p>O escritÃ³rio Ã© composto por uma equipe multidisciplinar, capaz de oferecer soluÃ§Ãµes jurÃ­dicas personalizadas a empresas de diferentes portes, nacionais e multinacionais. Nosso compromisso Ã© com a excelÃªncia no atendimento e a satisfaÃ§Ã£o de nossos clientes, buscando sempre o melhor resultado.</p>
-                <a href="#" class="btn btn-gold">Saiba Mais</a>
-            </div>
-            <div class="historia-image reveal-right">
-                <img src="img/evandro-1.png" alt="SÃ³cios">
-                <div class="logo-overlay-socios" style="text-align:center; padding: 20px;">
-                    <img src="img/LOGO (2).png" alt="Grupo Nabi" style="height: 70px; object-fit: contain;">
+    <!-- ===== NOSSA HISTÓRIA ===== -->
+    <section class="nossa-historia py-16 md:py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="flex-1 text-center lg:text-left reveal-left">
+                    <h2 class="font-heading text-3xl md:text-4xl text-gold-gradient mb-6">Nossa História (Sócios)</h2>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+                        O Grupo Nabi foi idealizado pelos sócios <strong class="text-gold-400">Evandro Nabi Bezerra de Alcântara</strong> e <strong class="text-gold-400">Aline Franciele Bello Kirchesch</strong>. Ao longo do tempo, o escritório se consolidou como uma referência na advocacia, oferecendo serviços de excelência.
+                    </p>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                        Além de suas atuações como docentes em universidades renomadas como UFMS e UNICENTRAL, trazem uma sólida formação jurídica, com especializações em instituições de prestígio.
+                    </p>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                        O escritório é composto por uma equipe multidisciplinar, capaz de oferecer soluções jurídicas personalizadas a empresas de diferentes portes, nacionais e multinacionais.
+                    </p>
+                    <a href="https://wa.me/556692480611" target="_blank"
+                       class="inline-block px-8 py-3 rounded text-sm font-bold tracking-widest uppercase text-white transition-all duration-300 hover:-translate-y-1"
+                       style="background: linear-gradient(135deg, #c8821a, #f5cc60, #c8821a);">
+                        Saiba Mais
+                    </a>
+                </div>
+                <div class="flex-1 w-full relative reveal-right">
+                    <img src="img/evandro-1.png" alt="Sócios Grupo Nabi" class="w-full rounded-xl shadow-2xl border border-gold-500/20">
+                    <div class="absolute bottom-4 right-4 glass rounded-xl p-4 border border-gold-500/20">
+                        <img src="img/LOGO (2).png" alt="Grupo Nabi" class="h-14 object-contain">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SÃ³cios Cards -->
-    <section class="socios-cards">
-        <div class="container">
-            <div class="socios-grid">
-                <!-- SÃ³cio 1 -->
-                <div class="socio-item fade-up delay-100">
-                    <div class="socio-photo">
-                        <img src="img/DSC_9561 (2).jpg" alt="Aline Franciele Bello Kirchesch" style="width: 100%; height: 480px; object-fit: cover; object-position: center center; border-radius: 16px;">
-                        <div class="socio-name-box">
-                            <h4 style="font-size: 1.1rem; text-align: center; margin-bottom: 5px;">Aline Franciele Bello Kirchesch</h4>
-                            <div class="socio-social" style="justify-content: center;">
-                                <a href="https://www.instagram.com/aline_kirchesch/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- ===== SÓCIOS ===== -->
+    <section class="socios-cards py-16 md:py-20 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+                <!-- Sócia 1 -->
+                <div class="group reveal">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gold-500/15 transition-all duration-400 group-hover:-translate-y-2 group-hover:shadow-gold-500/20 group-hover:shadow-2xl" style="height:480px;">
+                        <img src="img/DSC_9561 (2).jpg" alt="Aline Franciele Bello Kirchesch" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center" style="background:rgba(10,22,40,0.88);backdrop-filter:blur(10px);border-top:1px solid rgba(200,184,154,0.2);">
+                            <h4 class="socio-name font-body font-semibold text-base mb-2">Aline Franciele Bello Kirchesch</h4>
+                            <div class="flex items-center justify-center gap-3">
+                                <a href="https://www.instagram.com/aline_kirchesch/" target="_blank" class="text-gold-400 hover:text-gold-300 transition-colors"><i class="fab fa-instagram text-lg"></i></a>
+                                <a href="#" class="text-gold-400 hover:text-gold-300 transition-colors"><i class="fab fa-linkedin-in text-lg"></i></a>
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogada</a>
+                    <a href="https://wa.me/556692480611" target="_blank"
+                       class="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-bold tracking-widest uppercase text-white transition-all duration-300 hover:-translate-y-1 border border-gold-500/40 hover:border-gold-400"
+                       style="background: linear-gradient(135deg, rgba(200,130,26,0.15), rgba(245,204,96,0.1));">
+                        <i class="fab fa-whatsapp text-gold-400"></i> Falar com Advogada
+                    </a>
                 </div>
-                
-                <!-- SÃ³cio 2 -->
-                <div class="socio-item fade-up delay-300">
-                    <div class="socio-photo">
-                        <img src="img/DSC_9591.jpg" alt="Evandro Nabi Bezerra de AlcÃ¢ntara" style="width: 100%; height: 480px; object-fit: cover; object-position: center center; border-radius: 16px;">
-                        <div class="socio-name-box">
-                            <h4 style="font-size: 1.1rem; text-align: center; margin-bottom: 5px;">Evandro Nabi Bezerra de AlcÃ¢ntara</h4>
-                            <div class="socio-social" style="justify-content: center;">
-                                <a href="https://www.instagram.com/evandroalcantara.adv/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                <!-- Sócio 2 -->
+                <div class="group reveal">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gold-500/15 transition-all duration-400 group-hover:-translate-y-2 group-hover:shadow-gold-500/20 group-hover:shadow-2xl" style="height:480px;">
+                        <img src="img/DSC_9591.jpg" alt="Evandro Nabi Bezerra de Alcântara" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center" style="background:rgba(10,22,40,0.88);backdrop-filter:blur(10px);border-top:1px solid rgba(200,184,154,0.2);">
+                            <h4 class="socio-name font-body font-semibold text-base mb-2">Evandro Nabi Bezerra de Alcântara</h4>
+                            <div class="flex items-center justify-center gap-3">
+                                <a href="https://www.instagram.com/evandroalcantara.adv/" target="_blank" class="text-gold-400 hover:text-gold-300 transition-colors"><i class="fab fa-instagram text-lg"></i></a>
+                                <a href="#" class="text-gold-400 hover:text-gold-300 transition-colors"><i class="fab fa-linkedin-in text-lg"></i></a>
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/556692480611" target="_blank" class="btn btn-gold outline full-w" style="margin-top: 15px; border-radius: 8px;">Falar com Advogado</a>
+                    <a href="https://wa.me/556692480611" target="_blank"
+                       class="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-bold tracking-widest uppercase text-white transition-all duration-300 hover:-translate-y-1 border border-gold-500/40 hover:border-gold-400"
+                       style="background: linear-gradient(135deg, rgba(200,130,26,0.15), rgba(245,204,96,0.1));">
+                        <i class="fab fa-whatsapp text-gold-400"></i> Falar com Advogado
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
 
-
-
-    <!-- Image Gallery -->
-    <section class="image-gallery">
-        <img src="img/fotos escritorio (1).jpeg" alt="EscritÃ³rio 1">
-        <img src="img/fotos escritorio (2).jpeg" alt="EscritÃ³rio 2">
-        <img src="img/fotos escritorio (3).jpeg" alt="EscritÃ³rio 3">
+    <!-- ===== GALERIA ===== -->
+    <section class="image-gallery flex flex-wrap">
+        <img src="img/fotos escritorio (1).jpeg" alt="Escritório 1" class="flex-1 object-cover min-w-[200px]" style="height:280px;">
+        <img src="img/fotos escritorio (2).jpeg" alt="Escritório 2" class="flex-1 object-cover min-w-[200px]" style="height:280px;">
+        <img src="img/fotos escritorio (3).jpeg" alt="Escritório 3" class="flex-1 object-cover min-w-[200px]" style="height:280px;">
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
-        <!-- Google Maps Embed -->
-        <div class="footer-map" style="width: 100%; height: 350px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15383.565893325608!2d-55.1683935293489!3d-15.5434778107873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93764b85955bebed%3A0xe96cf09efde0ae66!2sCampo%20Verde%2C%20MT%2C%2078840-000!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- Map -->
+        <div style="width:100%;height:320px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15383.565893325608!2d-55.1683935293489!3d-15.5434778107873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93764b85955bebed%3A0xe96cf09efde0ae66!2sCampo%20Verde%2C%20MT%2C%2078840-000!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <div class="footer-beige">
-            <div class="container">
-                <div class="footer-logo-box">
-                    <img src="img/LOGO (2).png" alt="Grupo Nabi Advocacia" style="height: 120px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+
+        <!-- Footer content -->
+        <div class="py-16 px-4" style="background:#0a1628;border-top:1px solid rgba(200,184,154,0.1);">
+            <div class="max-w-6xl mx-auto">
+                <!-- Logo -->
+                <div class="text-center mb-12">
+                    <img src="img/LOGO (2).png" alt="Grupo Nabi" class="h-24 object-contain mx-auto opacity-90">
                 </div>
-                
-                <div class="footer-links-grid">
-                    <div class="footer-col">
-                        <h4>Navegue</h4>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Nossa HistÃ³ria</a></li>
-                            <li><a href="#">Ãreas de AtuaÃ§Ã£o</a></li>
+
+                <!-- Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+                    <div>
+                        <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Navegue</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li><a href="index.html" class="hover:text-gold-400 transition-colors">Home</a></li>
+                            <li><a href="#" class="hover:text-gold-400 transition-colors">Nossa História</a></li>
+                            <li><a href="#" class="hover:text-gold-400 transition-colors">Áreas de Atuação</a></li>
                         </ul>
-                        <h4>Redes Sociais</h4>
-                        <div class="footer-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <h4 class="font-body font-semibold text-gold-400 mt-8 mb-4 uppercase tracking-wider text-xs">Redes Sociais</h4>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold-400 hover:bg-gold-500/20 transition-colors"><i class="fab fa-facebook-f text-xs"></i></a>
+                            <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold-400 hover:bg-gold-500/20 transition-colors"><i class="fab fa-instagram text-xs"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gold-400 hover:bg-gold-500/20 transition-colors"><i class="fab fa-linkedin-in text-xs"></i></a>
                         </div>
                     </div>
-                    
-                    <div class="footer-col">
-                        <h4>ServiÃ§os</h4>
-                        <ul>
-                            <li><a href="#">Direito ImobiliÃ¡rio</a></li>
-                            <li><a href="#">Direito de FamÃ­lia</a></li>
-                            <li><a href="#">OrganizaÃ§Ã£o Patrimonial</a></li>
-                            <li><a href="#">Direito Administrativo</a></li>
-                            <li><a href="#">Direito Trabalhista</a></li>
-                            <li><a href="#">AuxÃ­lio-DoenÃ§a INSS</a></li>
-                            <li><a href="#">Assessoria JurÃ­dica</a></li>
-                            <li><a href="#">Direito Penal</a></li>
+
+                    <div>
+                        <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Serviços</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="direito-imobiliario.html" class="hover:text-gold-400 transition-colors">Direito Imobiliário</a></li>
+                            <li><a href="direito-familia.html" class="hover:text-gold-400 transition-colors">Direito de Família</a></li>
+                            <li><a href="organizacao-sucessoria.html" class="hover:text-gold-400 transition-colors">Organização Patrimonial</a></li>
+                            <li><a href="direito-administrativo.html" class="hover:text-gold-400 transition-colors">Direito Administrativo</a></li>
+                            <li><a href="direito-trabalhista.html" class="hover:text-gold-400 transition-colors">Direito Trabalhista</a></li>
+                            <li><a href="auxilio-doenca-inss.html" class="hover:text-gold-400 transition-colors">Auxílio-Doença INSS</a></li>
+                            <li><a href="assessoria-juridica.html" class="hover:text-gold-400 transition-colors">Assessoria Jurídica</a></li>
+                            <li><a href="direito-penal.html" class="hover:text-gold-400 transition-colors">Direito Penal</a></li>
                         </ul>
                     </div>
-                    
-                    <div class="footer-col address-col">
-                        <h4>EndereÃ§o & Contatos</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> Avenida Brasil, 577<br>2Âº andar, sala 03<br>Campo Verde â€“ MT</p>
-                        <p><a href="https://wa.me/556692480611" target="_blank" style="color:inherit;"><i class="fab fa-whatsapp"></i> (66) 9248-0611</a></p>
-                        <p><i class="fas fa-envelope"></i> advocaciagruponabi@gmail.com</p>
-                        <p><i class="fas fa-globe"></i> www.gruponabiadv.com</p>
+
+                    <div>
+                        <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Endereço &amp; Contatos</h4>
+                        <div class="space-y-3 text-gray-400 text-sm">
+                            <p class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-gold-500 mt-0.5"></i> Avenida Brasil, 577<br>2º andar, sala 03<br>Campo Verde – MT</p>
+                            <p><a href="https://wa.me/556692480611" target="_blank" class="flex items-center gap-2 hover:text-gold-400 transition-colors"><i class="fab fa-whatsapp text-gold-500"></i> (66) 9248-0611</a></p>
+                            <p><a href="mailto:advocaciagruponabi@gmail.com" class="flex items-center gap-2 hover:text-gold-400 transition-colors"><i class="fas fa-envelope text-gold-500"></i> advocaciagruponabi@gmail.com</a></p>
+                            <p class="flex items-center gap-2"><i class="fas fa-globe text-gold-500"></i> www.gruponabiadv.com</p>
+                        </div>
                     </div>
-                    
-                    <div class="footer-col form-col">
-                        <h4>Fique por dentro!</h4>
-                        <p>Receba novidades, dicas e conteÃºdos exclusivos direto no seu e-mail!</p>
-                        <input type="email" placeholder="E-mail">
-                        <button class="btn btn-dark" style="margin-top: 10px; padding: 5px 15px;">Assinar</button>
+
+                    <div>
+                        <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Fique por dentro!</h4>
+                        <p class="text-gray-400 text-sm mb-4">Receba novidades, dicas e conteúdos exclusivos direto no seu e-mail!</p>
+                        <input type="email" placeholder="Seu e-mail" class="w-full px-3 py-2.5 rounded bg-white/5 border border-gold-500/20 text-gray-200 text-sm mb-3 focus:outline-none focus:border-gold-400 transition-colors">
+                        <button class="w-full py-2.5 rounded text-xs font-bold tracking-widest uppercase text-white transition-all hover:-translate-y-0.5"
+                                style="background:linear-gradient(135deg,#c8821a,#f5cc60,#c8821a);">
+                            Assinar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-dark">
-            <div class="container foot-btm">
-                <span>Â© 2024 Grupo Nabi | Todos os direitos reservados.</span>
+
+        <!-- Footer bottom -->
+        <div class="py-4 px-4 text-center text-xs text-gray-500 border-t border-white/5" style="background:#060f1b;">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <span>© 2024 Grupo Nabi | Todos os direitos reservados.</span>
                 <span>Desenvolvido por Mestres do Site</span>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp floating button -->
+    <a href="https://wa.me/556692480611" target="_blank"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-green-500/30"
+       style="background:linear-gradient(135deg,#25d366,#128c7e);"
+       title="Fale com nossos especialistas">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
