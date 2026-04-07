@@ -956,15 +956,32 @@ ul {
     .news-image { display: none; } /* Hide generic image to save space */
     
     /* Sections spacing & global scaling */
-    .section-title { font-size: 1.5rem; margin-bottom: 15px; }
+    .section-title { font-size: 1.3rem; margin-bottom: 12px; }
     .btn { font-size: 0.7rem; padding: 8px 15px; }
-    p { font-size: 0.85rem; }
+    p { font-size: 0.8rem; line-height: 1.6; }
     
-    .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 40px 0; }
-    .nossa-historia { padding: 40px 0; }
+    .quem-somos, .areas-atuacao, .nosso-livro, .socios-cards, .blog-section { padding: 35px 0; }
+    .nossa-historia { padding: 35px 0; }
+    
+    /* Quem Somos - centrado e compacto no mobile */
+    .quem-somos .container { padding: 0 20px; }
+    .text-side { text-align: center; }
+    .text-side p { 
+        font-size: 0.78rem; 
+        line-height: 1.65; 
+        color: var(--clr-text-light); 
+        margin-bottom: 12px;
+        padding: 0 5px;
+    }
+    .text-side .section-title { 
+        text-align: center; 
+        font-size: 1.4rem; 
+        margin-bottom: 14px; 
+    }
+    .text-side .btn { margin: 0 auto; display: inline-block; }
     
     /* Grids stacking */
-    .content-split { flex-direction: column; gap: 30px; text-align: center; }
+    .content-split { flex-direction: column; gap: 25px; text-align: center; align-items: center; }
     .areas-grid { grid-template-columns: 1fr; gap: 20px; }
     .livre-flex { flex-direction: column; text-align: center; gap: 30px; }
     .socios-grid { grid-template-columns: 1fr; gap: 20px; }
