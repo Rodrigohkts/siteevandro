@@ -13,7 +13,14 @@
             theme: {
                 extend: {
                     colors: {
-                        navy: { 900: '#0a1628', 800: '#0f1e35', 700: '#162638', 600: '#1e3040', 500: '#243848' },
+                        navy: { 
+                            950: '#0d1e28',
+                            900: '#111f2c',
+                            800: '#152535',
+                            700: '#1a3040',
+                            600: '#1a3848', /* COR EXATA DA IMAGEM */
+                            500: '#204452'
+                        },
                         gold: { 300: '#f5cc60', 400: '#e8a020', 500: '#c8821a', 600: '#a06010' }
                     },
                     fontFamily: {
@@ -22,12 +29,16 @@
                     },
                     backgroundImage: {
                         'gold-gradient': 'linear-gradient(135deg, #c8821a 0%, #f5cc60 50%, #e8a020 75%, #c8821a 100%)',
-                        'navy-gradient': 'linear-gradient(160deg, #0f1e35 0%, #162638 40%, #0a1628 100%)',
+                        'navy-gradient': 'linear-gradient(160deg, #111f2c 0%, #1a3848 50%, #0d1e28 100%)',
                     }
                 }
             }
         }
     </script>
+
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@3/tsparticles.engine.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@3/tsparticles.slim.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,15 +63,23 @@
             background-clip: text;
         }
 
+        /* Particles canvas */
+        #tsparticles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         /* Glassmorphism */
         .glass {
-            background: rgba(15, 30, 53, 0.6);
+            background: rgba(26, 42, 55, 0.65);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(200, 184, 154, 0.12);
         }
         .glass-light {
-            background: rgba(22, 38, 56, 0.75);
+            background: rgba(26, 56, 72, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(200, 184, 154, 0.15);
@@ -88,7 +107,7 @@
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a1628; }
+        ::-webkit-scrollbar-track { background: #111f2c; }
         ::-webkit-scrollbar-thumb { background: #c8821a; border-radius: 3px; }
 
         /* Mobile menu transition */
@@ -102,7 +121,13 @@
         .socio-name { background: linear-gradient(135deg, #c8821a, #f5cc60, #e8a020); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     </style>
 </head>
-<body class="bg-navy-gradient min-h-screen text-gray-200 overflow-x-hidden">
+<body class="min-h-screen text-gray-200 overflow-x-hidden" style="background: #1a3848;">
+
+<!-- Particles container -->
+<div id="tsparticles"></div>
+
+<!-- All content wrapper (above particles) -->
+<div style="position:relative;z-index:1;">
 
     <!-- ===== SECRET CMS ADMIN BAR ===== -->
     <div id="admin-bar" class="admin-bar-hidden">
@@ -239,9 +264,11 @@
     </header>
 
     <!-- ===== HERO ===== -->
-    <section class="relative w-full overflow-hidden" style="aspect-ratio:16/9; max-height:90vh; min-height:300px;">
+    <section class="relative w-full overflow-hidden" style="min-height:56vw; max-height:90vh; min-height:300px;">
         <div class="absolute inset-0 z-0">
-            <video autoplay muted loop playsinline preload="auto" class="hero-video">
+            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" class="hero-video"
+                   x5-video-player-type="h5"
+                   x5-video-player-fullscreen="true">
                 <source src="0327.mp4" type="video/mp4">
             </video>
         </div>
@@ -580,7 +607,82 @@
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+        // Force video autoplay on mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hero-video');
+            if (video) {
+                video.setAttribute('playsinline', '');
+                video.setAttribute('muted', '');
+                video.muted = true;
+                video.loop = true;
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Autoplay blocked - try on first touch
+                        document.addEventListener('touchstart', () => { video.play(); }, { once: true });
+                    });
+                }
+            }
+        });
     </script>
     <script src="script.js"></script>
+
+    <!-- tsParticles init -->
+    <script>
+    (async () => {
+        // Use the slim bundle CDN
+        const tsScript = document.createElement('script');
+        tsScript.src = 'https://cdn.jsdelivr.net/npm/tsparticles-slim@3/tsparticles.slim.bundle.min.js';
+        tsScript.onload = async () => {
+            await tsParticles.load({
+                id: "tsparticles",
+                options: {
+                    fullScreen: { enable: true, zIndex: 0 },
+                    background: { color: { value: "#1a3848" } },
+                    fpsLimit: 40,
+                    particles: {
+                        number: { value: 55, density: { enable: true, area: 900 } },
+                        color: { value: ["#2a5a70", "#1e4a60", "#3a7a90", "#c8821a", "#e8a020"] },
+                        opacity: {
+                            value: { min: 0.04, max: 0.18 },
+                            animation: { enable: true, speed: 0.4, sync: false }
+                        },
+                        size: {
+                            value: { min: 1, max: 3.5 },
+                            animation: { enable: true, speed: 1.5, sync: false }
+                        },
+                        move: {
+                            enable: true,
+                            speed: { min: 0.2, max: 0.7 },
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            outModes: { default: "out" }
+                        },
+                        links: {
+                            enable: true,
+                            distance: 130,
+                            color: "#2a6a80",
+                            opacity: 0.06,
+                            width: 1
+                        }
+                    },
+                    detectRetina: true,
+                    interactivity: {
+                        events: {
+                            onHover: { enable: false },
+                            onClick: { enable: false }
+                        }
+                    }
+                }
+            });
+        };
+        document.head.appendChild(tsScript);
+    })();
+    </script>
+
+</div><!-- end content wrapper -->
 </body>
 </html>
+
