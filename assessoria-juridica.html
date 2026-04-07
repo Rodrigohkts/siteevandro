@@ -1,87 +1,242 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assessoria JurÃ­dica - Oliveira Castro Advogados</title>
+    <title>Assessoria Jurídica | Grupo Nabi Advocacia</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 
+                            950: '#0d1e28',
+                            900: '#111f2c',
+                            800: '#152535',
+                            700: '#1a3040',
+                            600: '#1a3848',
+                            500: '#204452'
+                        },
+                        gold: { 300: '#f5cc60', 400: '#e8a020', 500: '#c8821a', 600: '#a06010' }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #c8821a 0%, #f5cc60 50%, #e8a020 75%, #c8821a 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-container">
-            <div class="top-left">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/gruponabi.oficial" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            <div class="top-right">
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Av. Brasil, 577, 2Âº andar, sala 03...</a>
-                <a href="#"><i class="fab fa-whatsapp"></i> (65) 99353-1880</a>
-                <a href="#"><i class="fas fa-phone"></i> (65) 99353-1880</a>
-                <a href="#"><i class="fas fa-envelope"></i> advocaciagruponabi@gmail.com</a>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #c8821a 0%, #f5cc60 45%, #e8a020 70%, #c8821a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #tsparticles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .glass {
+            background: rgba(26, 42, 55, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 184, 154, 0.12);
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="min-h-screen text-gray-200 overflow-x-hidden" style="background: #1a3848;">
+
+    <div id="tsparticles"></div>
+
+    <div style="position:relative;z-index:1;">
+
+        <!-- ===== TOP BAR ===== -->
+        <div class="hidden md:block w-full text-xs text-gray-300 py-2 relative z-50" style="background:#1a3848; border-bottom: 1px solid rgba(200,184,154,0.15);">
+            <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank" class="hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-gold-400 transition-colors"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="flex items-center gap-5">
+                    <a href="#" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fas fa-map-marker-alt text-gold-500"></i> Av. Brasil, 577, 2º andar, sala 03</a>
+                    <a href="https://wa.me/556692480611" target="_blank" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fab fa-whatsapp text-gold-500"></i> (66) 9248-0611</a>
+                    <a href="mailto:advocaciagruponabi@gmail.com" class="hover:text-gold-400 transition-colors flex items-center gap-1"><i class="fas fa-envelope text-gold-500"></i> advocaciagruponabi@gmail.com</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Main Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <ul class="nav-left">
-                <li><a href="index.html">Home</a></li>
-            </ul>
-            
-            <div class="logo-center">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <h1 class="logo-main" style="font-size: 2.2rem; letter-spacing: 2px;">NABI</h1>
-                    <span class="logo-sub">GRUPO NABI</span>
-                    <span class="logo-desc">ADVOGADOS</span>
+        <!-- ===== NAVBAR ===== -->
+        <header id="navbar" class="w-full z-40 backdrop-blur-md sticky top-0 transition-all duration-300" style="background:#1a3848; border-bottom: 1px solid rgba(200,184,154,0.12);">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between lg:justify-center gap-2 lg:gap-6 relative">
+                <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide">
+                    <a href="direito-imobiliario.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Imobiliário</a>
+                    <a href="direito-familia.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito de Família</a>
+                    <a href="organizacao-sucessoria.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Organização Patrimonial</a>
+                    <a href="direito-administrativo.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Administrativo</a>
+                </nav>
+                <a href="index.html" class="flex-shrink-0 mx-4">
+                    <img src="img/LOGO (2).png" alt="Grupo Nabi Advocacia" class="h-14 md:h-16 object-contain">
+                </a>
+                <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide">
+                    <a href="direito-trabalhista.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Trabalhista</a>
+                    <a href="auxilio-doenca-inss.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Auxílio-Doença INSS</a>
+                    <a href="assessoria-juridica.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase underline">Assessoria Jurídica</a>
+                    <a href="direito-penal.html" class="text-gold-gradient hover:opacity-75 transition-opacity uppercase">Direito Penal</a>
+                </nav>
+                <button id="mobile-btn" class="lg:hidden text-gold-400 text-2xl ml-auto" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden lg:hidden border-t border-gold-500/10" style="background:#1a3848;">
+                <nav class="flex flex-col py-4 px-6 gap-4 text-sm font-semibold">
+                    <a href="index.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Home</a>
+                    <a href="direito-imobiliario.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Imobiliário</a>
+                    <a href="direito-familia.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito de Família</a>
+                    <a href="organizacao-sucessoria.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Organização Patrimonial</a>
+                    <a href="direito-administrativo.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Administrativo</a>
+                    <a href="direito-trabalhista.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Direito Trabalhista</a>
+                    <a href="auxilio-doenca-inss.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Auxílio-Doença INSS</a>
+                    <a href="assessoria-juridica.html" class="text-gold-gradient py-2 border-b border-gold-500/10">Assessoria Jurídica</a>
+                    <a href="direito-penal.html" class="text-gold-gradient py-2">Direito Penal</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ===== CONTENT ===== -->
+        <main class="py-20 px-4">
+            <div class="max-w-4xl mx-auto glass rounded-2xl p-8 md:p-12 text-center reveal">
+                <h1 class="font-heading text-4xl md:text-5xl text-gold-gradient mb-8">Assessoria Jurídica</h1>
+                <div class="text-gray-300 space-y-6 leading-relaxed text-lg">
+                    <p>
+                        Nossa equipe é altamente qualificada e está pronta para oferecer o melhor atendimento na área de <strong class="text-gold-400">Assessoria Jurídica</strong>.
+                    </p>
+                    <p>
+                        Entre em contato conosco para agendar uma consulta e entender como podemos ajudar no seu caso específico.
+                    </p>
+                </div>
+                <a href="https://wa.me/556692480611" target="_blank"
+                   class="inline-flex items-center gap-2 mt-10 px-8 py-4 rounded-lg text-sm font-bold tracking-widest uppercase text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-500/30"
+                   style="background: linear-gradient(135deg, #c8821a, #f5cc60, #c8821a);">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    Fale com um Especialista
                 </a>
             </div>
-            
-            <ul class="nav-right">
-                <li><a href="index.html">Voltar</a></li>
-            </ul>
-            
-            <div class="mobile-menu-btn" id="mobile-btn"><i class="fas fa-bars"></i></div>
-        </div>
-    </header>
+        </main>
 
-    <div style="height: 100px;"></div> <!-- Spacer -->
-
-    <section class="quem-somos" style="padding-top: 50px;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Assessoria JurÃ­dica</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 1.8;">
-                <p>Nossa equipe Ã© altamente qualificada e estÃ¡ pronta para oferecer o melhor atendimento na Ã¡rea de <strong>Assessoria JurÃ­dica</strong>.</p>
-                <p>Entre em contato conosco para agendar uma consulta e entender como podemos ajudar no seu caso especÃ­fico.</p>
-                <a href="#" class="btn btn-gold" style="margin-top: 20px;">Fale Conosco</a>
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer">
+            <div class="py-16 px-4" style="background:#1a3848; border-top:1px solid rgba(200,184,154,0.15);">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <img src="img/LOGO (2).png" alt="Grupo Nabi" class="h-24 object-contain mx-auto opacity-90">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm text-center sm:text-left">
+                        <div>
+                            <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Navegue</h4>
+                            <ul class="space-y-3 text-gray-400">
+                                <li><a href="index.html" class="hover:text-gold-400 transition-colors">Home</a></li>
+                                <li><a href="index.html#quem-somos" class="hover:text-gold-400 transition-colors">Quem Somos</a></li>
+                                <li><a href="index.html#areas-atuacao" class="hover:text-gold-400 transition-colors">Áreas de Atuação</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Serviços</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li><a href="direito-imobiliario.html" class="hover:text-gold-400 transition-colors">Direito Imobiliário</a></li>
+                                <li><a href="direito-familia.html" class="hover:text-gold-400 transition-colors">Direito de Família</a></li>
+                                <li><a href="organizacao-sucessoria.html" class="hover:text-gold-400 transition-colors">Organização Patrimonial</a></li>
+                                <li><a href="assessoria-juridica.html" class="hover:text-gold-400 transition-colors">Assessoria Jurídica</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Contatos</h4>
+                            <div class="space-y-3 text-gray-400">
+                                <p class="flex items-start gap-2 justify-center sm:justify-start"><i class="fas fa-map-marker-alt text-gold-500 mt-0.5"></i> Av. Brasil, 577, Campo Verde-MT</p>
+                                <p><a href="https://wa.me/556692480611" target="_blank" class="flex items-center gap-2 justify-center sm:justify-start hover:text-gold-400 transition-colors"><i class="fab fa-whatsapp text-gold-500"></i> (66) 9248-0611</a></p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-body font-semibold text-gold-400 mb-5 uppercase tracking-wider text-xs">Redes Sociais</h4>
+                            <div class="flex gap-3 justify-center sm:justify-start">
+                                <a href="https://www.instagram.com/gruponabi.oficial/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gold-400 hover:bg-gold-500/20 transition-colors border border-gold-500/20"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gold-400 hover:bg-gold-500/20 transition-colors border border-gold-500/20"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer" style="margin-top: 100px;">
-        <div class="footer-dark">
-            <div class="container foot-btm">
-                <span>Â© 2024 Grupo Nabi | Todos os direitos reservados.</span>
-                <span>Desenvolvido por Mestres do Site</span>
+            <div class="py-4 px-4 text-center text-xs text-gray-400 border-t border-white/5" style="background:#152e3a;">
+                <span>© 2024 Grupo Nabi | Todos os direitos reservados.</span>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="script.js"></script>
+        <!-- WhatsApp floating button -->
+        <a href="https://wa.me/556692480611" target="_blank"
+           class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-green-500/30"
+           style="background:linear-gradient(135deg,#25d366,#128c7e);"
+           title="Fale com nossos especialistas">
+            <i class="fab fa-whatsapp text-white text-2xl"></i>
+        </a>
+
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@3/tsparticles.slim.bundle.min.js"></script>
+    <script>
+    (async () => {
+        await tsParticles.load({
+            id: "tsparticles",
+            options: {
+                fullScreen: { enable: true, zIndex: 0 },
+                background: { color: { value: "#1a3848" } },
+                fpsLimit: 40,
+                particles: {
+                    number: { value: 40, density: { enable: true, area: 900 } },
+                    color: { value: ["#2a5a70", "#1e4a60", "#3a7a90", "#c8821a", "#e8a020"] },
+                    opacity: { value: { min: 0.04, max: 0.18 }, animation: { enable: true, speed: 0.4, sync: false } },
+                    size: { value: { min: 1, max: 3.5 }, animation: { enable: true, speed: 1.5, sync: false } },
+                    move: { enable: true, speed: { min: 0.2, max: 0.7 }, direction: "none", random: true, outModes: { default: "out" } },
+                    links: { enable: true, distance: 130, color: "#2a6a80", opacity: 0.06, width: 1 }
+                },
+                detectRetina: true
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
